@@ -1,0 +1,7 @@
+{
+  "name": "abc-jobs-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
