@@ -1,0 +1,50 @@
+
+<ion-content class="ion-padding">
+  <div class="logo-container">
+    <img src="../../assets/imgs/abc-jobs-logo.png" alt="Aplication Logo" class="app-logo">
+    <ion-button (click)="redirectToBegin()" class="back-button" fill="clear" color="dark">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <ion-item class="rounded-input">
+      <ion-input type="email" formControlName="email" placeholder="Email" clearInput></ion-input>
+      <ion-icon *ngIf="emailControl?.hasError('required') && (emailControl?.touched || emailControl?.dirty)" name="alert-circle-outline" class="error-indicator"></ion-icon>
+    </ion-item>
+    <div *ngIf="emailControl?.hasError('required') && (emailControl?.touched || emailControl?.dirty)" class="error-message">
+      The email is required.
+    </div>
+
+    <ion-item class="rounded-input">
+      <ion-input type="password" formControlName="password" placeholder="Password" clearInput required></ion-input>
+      <ion-icon *ngIf="passwordControl?.hasError('required') && (passwordControl?.touched || passwordControl?.dirty)" name="alert-circle-outline" class="error-indicator"></ion-icon>
+    </ion-item>
+    <div *ngIf="passwordControl?.hasError('required') && (passwordControl?.touched || passwordControl?.dirty)" class="error-message">
+      The password is required.
+    </div>
+
+    <div class="select-container">
+      <ion-label class="user-type-label" color="light">Select user Type</ion-label>
+    </div>
+
+    <div class="checkbox-container">
+      <ion-item lines="none" class="checkbox-item">
+        <ion-checkbox formControlName="checkboxABC" (ionChange)="onCheckboxChange()" slot="start"></ion-checkbox>
+        <ion-label>ABC Employee</ion-label>
+      </ion-item>
+
+      <ion-item lines="none" class="checkbox-item">
+        <ion-checkbox formControlName="checkboxTechnical" (ionChange)="onCheckboxChange()" slot="start"></ion-checkbox>
+        <ion-label>Technical R.</ion-label>
+      </ion-item>
+    </div>
+
+    <div class="button-container">
+      <ion-button color="dark" shape="round" type="submit"> LOGIN </ion-button>
+    </div>
+
+    <div *ngIf="formSubmitted && !loginForm.valid" class="error-message"></div>
+
+  </form>
+</ion-content>

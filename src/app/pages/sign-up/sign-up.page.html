@@ -1,0 +1,43 @@
+
+<ion-content class="ion-padding">
+  <div class="logo-container">
+    <div class="signup-container">
+      <ion-label class="user-type-label" color="dark">SIGN UP</ion-label>
+    </div>
+    <ion-button (click)="redirectToBegin()" class="back-button" fill="clear" color="dark">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  </div>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+    <div class="select-container">
+      <ion-label class="user-type-label" color="light">Select user Type</ion-label>
+    </div>
+
+    <div class="image-container">
+      <img src="../../assets/imgs/abcEmployee.png" alt="Employee Logo" class="image-logo">
+      <img src="../../assets/imgs/technicalResource.png" alt="Technical Logo" class="image-logo">
+    </div>
+
+    <div class="checkbox-container">
+      <ion-item lines="none" class="checkbox-item">
+        <ion-checkbox formControlName="checkboxABC" (ionChange)="onCheckboxChange()" slot="start"></ion-checkbox>
+        <ion-label>ABC Employee</ion-label>
+      </ion-item>
+
+      <ion-item lines="none" class="checkbox-item">
+        <ion-checkbox formControlName="checkboxTechnical" (ionChange)="onCheckboxChange()" slot="start"></ion-checkbox>
+        <ion-label>Technical R.</ion-label>
+      </ion-item>
+    </div>
+
+    <div class="button-container">
+      <ion-button color="dark" shape="round" type="submit"> SIGN UP </ion-button>
+    </div>
+
+    <div *ngIf="formSubmitted && !signUpForm.valid" class="error-message"></div>
+
+  </form>
+</ion-content>
+

@@ -1,0 +1,50 @@
+<ion-content>
+  <form [formGroup]="languageForm">
+    <ion-card class="custom-card">
+      <ion-toolbar>
+        <ion-title color="light">Languages</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="dismissModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+  
+      <ion-card>
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Language</ion-label>
+          <ion-input formControlName="language" type="text" color="dark"></ion-input>
+        </ion-item>
+        <div *ngIf="languageControl?.hasError('required') && (languageControl?.touched || languageControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Language Name is required.</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Score</ion-label>
+          <ion-radio-group formControlName="score">
+            <ion-row class="rating">
+              <ion-col size="auto" *ngFor="let star of [1, 2, 3, 4, 5]">
+                <ion-icon
+                  name="star"
+                  [class.selected]="star <= selectedRating"
+                  (click)="selectRating(star)"
+                ></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-radio-group>
+        </ion-item>
+
+      </ion-card>
+  
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button color="danger" (click)="dismissModal()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button color="success" (click)="createLanguage()">Create</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-card>
+  
+  </form>
+</ion-content>

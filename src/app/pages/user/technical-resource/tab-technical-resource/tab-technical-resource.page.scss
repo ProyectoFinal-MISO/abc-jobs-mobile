@@ -1,0 +1,24 @@
+ion-tab-bar, ion-tab-button{
+    background-color: #484848;
+}
+
+ion-icon{
+    color: #d7d8da;
+}
+
+ion-label {
+    color: #d7d8da;
+    display: block;
+    white-space: normal; 
+    text-align: center; 
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+ion-header {
+    ion-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+}

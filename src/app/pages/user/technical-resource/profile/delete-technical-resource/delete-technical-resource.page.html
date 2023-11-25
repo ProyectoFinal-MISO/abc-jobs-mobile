@@ -1,0 +1,83 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <form [formGroup]="deleteTechnicalForm" (ngSubmit)="onSubmit()">
+    <div class="user-info-container">
+      
+      <div class="logo-container">
+        <img src="../../assets/imgs/abc-jobs-logo.png" alt="Aplication Logo" class="app-logo">
+      </div>
+
+      <ion-card class="custom-card-terms-of-service">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-text color="light">ABC Jobs Terms Of Service</ion-text>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card class="custom-card-text">
+          <ion-card-content>
+            When it comes to the terms of service for deleting a user
+            account in an application, it's essential to ensure clarity and
+            transparency. We understand that users may want to discontinue
+            their use of our services for various reasons, and we respect
+            their choice. To delete your account, you can initiate the
+            process through your account settings or by contacting our customer
+            support. Please note that once you request the deletion of your
+            account, your data, including personal information, posts, and
+            interactions, will be permanently removed from our system. This
+            action is irreversible, so make sure you've backed up any data
+            you wish to keep. Additionally, it's important to be aware that some
+            information may remain in our system for a limited period to
+            comply with legal obligations or for business purposes. We take
+            the security of your data seriously and use industry-standard
+            measures to protect it. By deleting your account, you agree to
+            waive any rights or claims related to your data. We advise users
+            to review our full terms of service and privacy policy for a
+            comprehensive understanding of our data management and account
+            deletion processes. Your satisfaction and privacy are of the
+            utmost importance to us, and we are committed to providing a
+            seamless and secure experience throughout your journey with our
+            application.
+          </ion-card-content>
+        </ion-card>
+
+        <ion-item lines="none" class="checkbox-item">
+          <ion-checkbox formControlName="checkboxdeleteABC" slot="start"></ion-checkbox>
+          <ion-label>Accept the terms of service</ion-label>
+        </ion-item>
+        
+      </ion-card>
+
+      <ion-card class="custom-card">
+        <ion-item class="rounded-input-user-data">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+        </ion-item>
+    
+        <ion-item class="rounded-input-user-data">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+        </ion-item>
+    
+        <ion-item class="rounded-input-user-data">
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input type="password" formControlName="confirmPassword" placeholder="Password"></ion-input>
+        </ion-item>
+
+      </ion-card>
+
+      <div *ngIf="emailControl?.hasError('required') && (emailControl?.touched || emailControl?.dirty)" class="error-message">
+        <ion-text color="danger">The email is required.</ion-text>
+      </div>
+      <div *ngIf="!passwordMatch() && (confirmPasswordControl?.dirty || confirmPasswordControl?.touched)">
+        <ion-text color="danger">Passwords do not match.</ion-text>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <ion-button color="danger" shape="round" type="submit"> DELETE </ion-button>
+    </div>
+    <div *ngIf="formSubmitted && !deleteTechnicalForm.valid" class="error-message"></div>
+
+  </form>
+
+</ion-content>

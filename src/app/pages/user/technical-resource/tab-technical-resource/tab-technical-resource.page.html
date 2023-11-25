@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<app-menu-technical></app-menu-technical>
+
+<ion-content [fullscreen]="true">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home-technical-resource">
+        <ion-icon name="home-sharp"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="interview">
+        <ion-icon name="calendar-sharp"></ion-icon>
+        <ion-label>Interviews</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="interview-results">
+        <ion-icon name="chatbubbles-sharp"></ion-icon>
+        <ion-label>Interview Results</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="performance-results">
+        <ion-icon name="ribbon-sharp"></ion-icon>
+        <ion-label>Performance</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="technical-results">
+        <ion-icon name="newspaper-sharp"></ion-icon>
+        <ion-label>Test Results</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="my-team">
+        <ion-icon name="briefcase-sharp"></ion-icon>
+        <ion-label>My Teams</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

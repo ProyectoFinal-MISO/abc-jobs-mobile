@@ -1,0 +1,96 @@
+.logo-container {
+    text-align: center;
+    margin-top: 100px;
+    position: relative;
+}
+
+.back-button{
+    position: absolute;
+    left: 5px;
+    top: 15px;
+}
+
+.back-button ion-icon {
+    font-size: 50px; 
+}
+
+.checkbox-item {
+    --padding-start: 0;
+    --background: transparent;
+}
+
+.checkbox-item ion-label {
+    color: white;
+}
+  
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.button-container ion-button {
+    margin-top: 10px;
+    min-height: 50px;
+    min-width: 200px;
+}
+
+
+.select-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 40px;
+}
+
+.user-type-label {
+    font-family: 'Jura', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.error-message{
+    color: red;
+    position: relative;
+    bottom: -10px; 
+    left: 50px;
+    font-size: 12px;
+}
+
+.error-indicator {
+    color: red;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 30px;
+  }
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.image-logo {
+    max-width: 40%;
+    max-height: 40%;
+}

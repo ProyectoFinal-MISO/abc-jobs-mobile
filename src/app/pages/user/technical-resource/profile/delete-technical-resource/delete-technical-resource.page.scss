@@ -1,0 +1,71 @@
+.logo-container {
+    text-align: center;
+    margin-top: 100px;
+    position: relative;
+}
+
+.app-logo {
+    max-width: 250px;
+}
+
+.rounded-input-user-data{
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: white;
+    font-family: 'Jura', sans-serif;;
+}
+
+.custom-card{
+    background-color: #283138;
+    height: 215px;
+}
+
+.custom-card-terms-of-service{
+    background-color: #283138;
+    padding: 20px;
+}
+
+.custom-card-text{
+    background-color: #ffffff;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #333;
+    text-align: justify;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-container ion-button {
+    margin-top: 10px;
+    min-height: 50px;
+    min-width: 200px;
+}
+
+ion-card-content {
+    padding: 10px; 
+  }
+  
+ion-card-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-item {
+    --padding-start: 0;
+    --background: transparent;
+    padding: 5px; 
+    font-size: 11px; 
+}
+
+.checkbox-item ion-label {
+    color: white;
+}

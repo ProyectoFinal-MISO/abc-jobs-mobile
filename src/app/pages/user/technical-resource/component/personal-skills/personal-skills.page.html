@@ -1,0 +1,54 @@
+<ion-content>
+  <form [formGroup]="personalSkillForm">
+    <ion-card class="custom-card">
+      <ion-toolbar>
+        <ion-title color="light">Personal Skills</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="dismissModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+  
+      <ion-card>
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input formControlName="personalSkillName" type="text" color="dark"></ion-input>
+        </ion-item>
+        <div *ngIf="personalSkillNameControl?.hasError('required') && (personalSkillNameControl?.touched || personalSkillNameControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Name is required.</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Score</ion-label>
+          <ion-radio-group formControlName="score">
+            <ion-row class="rating">
+              <ion-col size="auto" *ngFor="let star of [1, 2, 3, 4, 5]">
+                <ion-icon
+                  name="star"
+                  [class.selected]="star <= selectedRating"
+                  (click)="selectRating(star)"
+                ></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-radio-group>
+        </ion-item>
+
+      </ion-card>
+  
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button color="danger" (click)="dismissModal()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button color="success" (click)="createPersonalSkill()">Create</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-card>
+  
+  </form>
+</ion-content>
+
+
+
+

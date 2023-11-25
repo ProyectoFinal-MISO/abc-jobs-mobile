@@ -1,0 +1,402 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <form [formGroup]="registrationTechnicalForm" (ngSubmit)="onSubmit()">
+    <div class="logo-container">
+      <div class="signup-container">
+        <ion-label class="user-type-label" color="light">SIGN UP - TECHNICAL</ion-label>
+      </div>
+      <ion-button (click)="redirectToSignUp()" class="back-button" fill="clear" color="light">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="user-info-container">
+      <div class="section-title">
+        <ion-label color="light">Account Data</ion-label>
+      </div>
+      <div class="divider"></div>
+
+      <ion-card class="custom-card">
+        <ion-item class="rounded-input-user-data">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+        </ion-item>
+
+        <ion-item class="rounded-input-user-data">
+          <ion-label position="floating">Username</ion-label>
+          <ion-input type="email" formControlName="username" placeholder="Username"></ion-input>
+        </ion-item>
+    
+        <ion-item class="rounded-input-user-data">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+        </ion-item>
+    
+        <ion-item class="rounded-input-user-data">
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input type="password" formControlName="confirmPassword" placeholder="Password"></ion-input>
+        </ion-item>
+
+      </ion-card>
+
+      <div *ngIf="emailControl?.hasError('required') && (emailControl?.touched || emailControl?.dirty)" class="error-message">
+        <ion-text color="danger">The email is required.</ion-text>
+      </div>
+      <div *ngIf="usernameControl?.hasError('required') && (usernameControl?.touched || usernameControl?.dirty)" class="error-message">
+        <ion-text color="danger">The username is required.</ion-text>
+      </div>
+      <div *ngIf="!passwordMatch() && (confirmPasswordControl?.dirty || confirmPasswordControl?.touched)">
+        <ion-text color="danger">Passwords do not match.</ion-text>
+      </div>
+  
+    </div>
+
+    <div class="personal-data-container">
+
+      <div class="section-title">
+        <ion-label color="light">Personal Data</ion-label>
+      </div>
+      <div class="divider"></div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-md="5">
+            <ion-avatar class="avatar-container" style="background-color: black;">
+              <ion-img [src]="selectedImage"></ion-img>
+            </ion-avatar>
+            <input type="file" accept="image/*" (change)="selectImage($event)" style="display: none;" id="imageInput">
+            <ion-button class="select-image-button" expand="full" (click)="openImagePicker()" color="dark">Select Avatar Image</ion-button>
+          </ion-col>
+          <ion-col size="12" size-md="5">
+            <ion-item class="rounded-input">
+              <ion-label position="floating">Name</ion-label>
+              <ion-input formControlName="name" placeholder="Enter your name" color="dark"></ion-input>
+            </ion-item>
+            <ion-item class="rounded-input">
+              <ion-label position="floating">Last Name</ion-label>
+              <ion-input formControlName="lastName" placeholder="Enter your last name" color="dark"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">Identification Type</ion-label>
+        <ion-select formControlName="identificationType" (ionChange)="optionsFn($event)" interface="popover" placeholder="Select Id type">
+          <ion-select-option *ngFor="let identificationType of identificationTypes" [value]="identificationType.value">
+            {{ identificationType.label }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item class="rounded-input-additional">
+        <ion-label position="floating">Identification</ion-label>
+        <ion-input formControlName="identification" placeholder="Enter your identification" color="dark" inputmode="tel" pattern="[0-9]*"></ion-input>
+      </ion-item>
+
+      <ion-item class="rounded-input-additional">
+        <ion-label position="stacked">Date of birth</ion-label>
+        <ion-input formControlName="birthdate" id="date" placeholder="Select Your Birthdate"></ion-input>
+        <ion-popover trigger="date" >
+          <ng-template>
+            <ion-datetime presentation="date" formControlName="birthdate" (ionChange)="updateBirthdate($event)"></ion-datetime>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+      <div *ngIf="hasNotAdultError()" class="error-message">
+        <ion-text color="danger">You must be 18 years or older.</ion-text>
+      </div>
+
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">Genre</ion-label>
+        <ion-select formControlName="genre" (ionChange)="optionsGenre($event)" interface="popover" placeholder="Select Your genre">
+          <ion-select-option *ngFor="let genre of genres" [value]="genre.value">
+            {{ genre.label }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item class="rounded-input-additional">
+        <ion-label position="floating">Phone Number</ion-label>
+        <ion-input formControlName="phone" placeholder="Enter your Phone number" color="dark" inputmode="tel" pattern="[0-9]*"></ion-input>
+      </ion-item>
+  
+      <ion-item class="rounded-input-additional">
+        <ion-label position="floating">Mobile Number</ion-label>
+        <ion-input formControlName="mobile" placeholder="Enter your Mobile number" color="dark" inputmode="tel" pattern="[0-9]*"></ion-input>
+      </ion-item>
+
+    </div>
+
+    <div class="location-data-container">
+
+      <div class="section-title">
+        <ion-label color="light">Location Data</ion-label>
+      </div>
+      <div class="divider"></div>
+
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">Country</ion-label>
+        <ion-select formControlName="country" (ionChange)="optionsCountry($event)" interface="popover" placeholder="Select Country">
+          <ion-select-option *ngFor="let country of countries" [value]="country">
+            {{ country.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">State</ion-label>
+        <ion-select formControlName="state" (ionChange)="optionsState($event)" interface="popover" placeholder="Select State">
+          <ion-select-option *ngFor="let state of selectedCountry.states" [value]="state">
+            {{ state.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">City</ion-label>
+        <ion-select formControlName="city" (ionChange)="optionsCity($event)" interface="popover" placeholder="Select City">
+          <ion-select-option *ngFor="let city of selectedState.cities" [value]="city">
+            {{ city.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="rounded-input-additional">
+        <ion-label position="floating">Address</ion-label>
+        <ion-input formControlName="address" placeholder="Enter your Address" color="dark"></ion-input>
+      </ion-item>
+
+    </div>
+
+    <div class="additional-info-container">
+      
+      <div class="section-title">
+        <ion-label color="light">Additional Information</ion-label>
+      </div>
+      <div class="divider"></div>
+
+      <ion-item class="rounded-input-additional">
+        <ion-label position="floating">Driver License</ion-label>
+        <ion-input formControlName="driverLicense" placeholder="Enter your Driver License" color="dark"></ion-input>
+      </ion-item>
+
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">Transfer Availability</ion-label>
+        <ion-select formControlName="transfer" (ionChange)="optionsTransfer($event)" interface="popover" placeholder="Select Transfer Availability">
+          <ion-select-option *ngFor="let transfer of transferOptions" [value]="transfer">
+            {{ transfer.label }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="rounded-input-additional">
+        <ion-label position="floating">Vehicle</ion-label>
+        <ion-input formControlName="vehicle" placeholder="Enter your Vehicle" color="dark"></ion-input>
+      </ion-item>
+
+
+    </div>
+
+    <div class="academic-info-container">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <div class="section-title">
+              <ion-label color="light">Academic Data</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            <ion-button (click)="openModalAcademicData()" class="add-button" fill="clear" color="dark">
+              <ion-icon name="add-circle"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="divider"></div>
+
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let academicData of academicDataList" class="custom-card-data">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-text color="light">{{ academicData.schoolName }}</ion-text>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <ion-text color="light">{{ academicData.educationLevel }}   , </ion-text>
+              <ion-text color="light" class="small-text">{{ academicData.title }}</ion-text>
+            </ion-card-subtitle>
+          </ion-card-header>
+      
+          <ion-card-content>
+            <ion-row class="ion-align-items-start">
+              <ion-col size="6">
+                <ion-text color="light"> Start: {{ academicData.startDate }}</ion-text>
+              </ion-col>
+              <ion-col size="6" class="ion-text-end">
+                <ion-text color="light"> {{ academicData.endDate ? 'End: ' + academicData.endDate : 'Actual' }}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+
+    </div>
+
+    <div class="professional-info-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <div class="section-title">
+              <ion-label color="light">Professional Experience Data</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            <ion-button (click)="openModalProfessionalData()" class="add-button" fill="clear" color="dark">
+              <ion-icon name="add-circle"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="divider"></div>
+
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let professionalData of professionalDataList" class="custom-card-data">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-text color="light">{{ professionalData.titleJob }}</ion-text>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <ion-text color="light">{{ professionalData.companyName }}</ion-text>
+            </ion-card-subtitle>
+          </ion-card-header>
+      
+          <ion-card-content>
+            <ion-text color="light" class="small-text">{{ professionalData.details }}</ion-text>
+            <ion-row class="ion-align-items-start">
+              <ion-col size="6">
+                <ion-text color="light"> Start: {{ professionalData.startDate }}</ion-text>
+              </ion-col>
+              <ion-col size="6" class="ion-text-end">
+                <ion-text color="light"> {{ professionalData.endDate ? 'End: ' + professionalData.endDate : 'Actual' }}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+
+    </div>
+
+    <div class="programming-languages-info-container">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <div class="section-title">
+              <ion-label color="light">Programming Languages</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            <ion-button (click)="openModalProgrammingLanguage()" class="add-button" fill="clear" color="dark">
+              <ion-icon name="add-circle"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="divider"></div>
+
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let programminglanguage of programminglanguageList" class="custom-card-data">
+          <ion-label>
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col size="8">
+                  <ion-text color="light">{{ programminglanguage.name }}</ion-text>
+                </ion-col>
+                <ion-col size="4" class="ion-text-end">
+                  <ion-icon *ngFor="let star of getStars(programminglanguage.score)" name="star" color="warning"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-card>
+      </ion-list>
+
+    </div>
+
+    <div class="languages-info-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <div class="section-title">
+              <ion-label color="light">Languages</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            <ion-button (click)="openModalLanguage()" expand="block" class="add-button" fill="clear" color="dark">
+              <ion-icon name="add-circle"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="divider"></div>
+
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let language of languageList" class="custom-card-data">
+          <ion-label>
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col size="8">
+                  <ion-text color="light">{{ language.name }}</ion-text>
+                </ion-col>
+                <ion-col size="4" class="ion-text-end">
+                  <ion-icon *ngFor="let star of getStars(language.score)" name="star" color="warning"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-card>
+      </ion-list>
+    </div>
+
+    <div class="personal-skills-info-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <div class="section-title">
+              <ion-label color="light">Personal Skills</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            <ion-button (click)="openModalPersonalSkills()" expand="block" class="add-button" fill="clear" color="dark">
+              <ion-icon name="add-circle"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="divider"></div>
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let skill of personalSkillList" class="custom-card-data">
+          <ion-label>
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col size="8">
+                  <ion-text color="light">{{ skill.name }}</ion-text>
+                </ion-col>
+                <ion-col size="4" class="ion-text-end">
+                  <ion-icon *ngFor="let star of getStars(skill.score)" name="star" color="warning"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-card>
+      </ion-list>
+    </div>
+    
+    <div class="button-container">
+      <ion-button color="light" shape="round" type="submit"> SIGN UP </ion-button>
+    </div>
+    <div *ngIf="formSubmitted && !registrationTechnicalForm.valid" class="error-message"></div>
+  </form>
+
+</ion-content>

@@ -6,6 +6,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PrincipalMenuPageModule } from './pages/user/employee/principal-menu/principal-menu.module';
+import { TabEmployeePageModule } from './pages/user/employee/tab-employee/tab-employee.module';
 
 @NgModule({
   declarations: [AppComponent],

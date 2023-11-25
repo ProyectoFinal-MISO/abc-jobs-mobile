@@ -1,0 +1,234 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="getTechnicalForm">
+    <div class="logo-container">
+      <div class="signup-container">
+        <ion-label class="user-type-label" color="light">TECHNICAL RESOURCE</ion-label>
+      </div>
+    </div>
+
+    <div class="user-info-container">
+      <ion-list class="custom-list">
+        <ion-card class="custom-card info-card">
+          <ion-card-header>
+            <ion-card-title class="card-title">{{ getTechnicalForm.get('name')?.value }} {{ getTechnicalForm.get('lastName')?.value }}</ion-card-title>
+            <ion-card-subtitle class="card-subtitle">{{ getTechnicalForm.get('email')?.value }}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content class="card-content-label">
+            <div class="centered-label">
+              <ion-icon name="card" slot="start"></ion-icon>
+              <ion-label>{{ getTechnicalForm.get('identificationType')?.value }} {{ getTechnicalForm.get('identification')?.value }}</ion-label>
+            </div>
+            <div class="centered-label">
+              <ion-icon name="calendar-number" slot="start"></ion-icon>
+              <ion-label>{{ getTechnicalForm.get('birthdate')?.value }}</ion-label>
+            </div>
+            <div class="centered-label">
+              <ion-icon name="accessibility" slot="start"></ion-icon>
+              <ion-label>{{ getTechnicalForm.get('genre')?.value }}</ion-label>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="custom-card info-card">
+
+          <ion-card-header>
+            <ion-card-subtitle  class="card-subtitle"> Information Data </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div class="centered-label">
+              <ion-icon name="home" slot="start" class="white-text"></ion-icon>
+              <ion-label class="white-text">{{ getTechnicalForm.get('phoneNumber')?.value }}</ion-label>
+            </div>
+
+            <div class="centered-label">
+              <ion-icon name="call" slot="start" class="white-text"></ion-icon>
+              <ion-label class="white-text">{{ getTechnicalForm.get('mobile')?.value }}</ion-label>
+            </div>
+
+            <div class="centered-label">
+              <ion-icon name="globe" slot="start" class="white-text"></ion-icon>
+              <ion-label class="white-text">{{ getTechnicalForm.get('country')?.value }}</ion-label>
+            </div>
+
+            <div class="centered-label">
+              <ion-icon name="map" slot="start" class="white-text"></ion-icon>
+              <ion-label class="white-text">{{ getTechnicalForm.get('state')?.value }}</ion-label>
+            </div>
+
+            <div class="centered-label">
+              <ion-icon name="business" slot="start" class="white-text"></ion-icon>
+              <ion-label class="white-text">{{ getTechnicalForm.get('city')?.value }}</ion-label>
+            </div>
+
+            <div class="centered-label">
+              <ion-icon name="location" slot="start" class="white-text"></ion-icon>
+              <ion-label class="white-text">{{ getTechnicalForm.get('address')?.value }}</ion-label>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="custom-card info-card">
+          <ion-card-header>
+            <ion-card-subtitle  class="card-subtitle"> Additional Data </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="centered-label">
+              <ion-icon name="id-card" slot="start" class="white-text"></ion-icon>
+              <ion-label class="white-text">{{ getTechnicalForm.get('driverLicense')?.value }}</ion-label>
+            </div>
+
+            <div class="centered-label">
+              <ion-icon name="checkbox" slot="start" class="white-text"></ion-icon>
+              <ion-label class="white-text">{{ getTechnicalForm.get('transferAvailability')?.value }}</ion-label>
+            </div>
+
+            <div class="centered-label">
+              <ion-icon name="car" slot="start" class="white-text"></ion-icon>
+              <ion-label class="white-text">{{ getTechnicalForm.get('vehicle')?.value }}</ion-label>
+            </div>
+            
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-list>
+      <ion-list class="custom-list">
+        <div class="centered-label">
+          <ion-icon name="extension-puzzle" slot="start"></ion-icon>
+          <ion-label> Academic Data</ion-label>
+        </div>
+        <ion-list class="custom-list-info">
+          <ion-card *ngFor="let academicData of academicDataList" class="custom-card-data">
+            <ion-card-header>
+              <ion-card-title>
+                <ion-text color="light">{{ academicData.schoolName }}</ion-text>
+              </ion-card-title>
+              <ion-card-subtitle>
+                <ion-text color="light">{{ academicData.educationLevel }}   , </ion-text>
+                <ion-text color="light" class="small-text">{{ academicData.title }}</ion-text>
+              </ion-card-subtitle>
+            </ion-card-header>
+        
+            <ion-card-content>
+              <ion-row class="ion-align-items-start">
+                <ion-col size="6">
+                  <ion-text color="light"> Start: {{ academicData.startDate }}</ion-text>
+                </ion-col>
+                <ion-col size="6" class="ion-text-end">
+                  <ion-text color="light"> {{ academicData.endDate ? 'End: ' + academicData.endDate : 'Actual' }}</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-list>
+
+      <ion-list class="custom-list">
+        <div class="centered-label">
+          <ion-icon name="briefcase" slot="start"></ion-icon>
+          <ion-label> Professional Data</ion-label>
+        </div>
+        <ion-list class="custom-list-info">
+          <ion-card *ngFor="let professionalData of professionalDataList" class="custom-card-data">
+            <ion-card-header>
+              <ion-card-title>
+                <ion-text color="light">{{ professionalData.titleJob }}</ion-text>
+              </ion-card-title>
+              <ion-card-subtitle>
+                <ion-text color="light">{{ professionalData.companyName }}</ion-text>
+              </ion-card-subtitle>
+            </ion-card-header>
+        
+            <ion-card-content>
+              <ion-text color="light" class="small-text">{{ professionalData.details }}</ion-text>
+              <ion-row class="ion-align-items-start">
+                <ion-col size="6">
+                  <ion-text color="light"> Start: {{ professionalData.startDate }}</ion-text>
+                </ion-col>
+                <ion-col size="6" class="ion-text-end">
+                  <ion-text color="light"> {{ professionalData.endDate ? 'End: ' + professionalData.endDate : 'Actual' }}</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+        
+      </ion-list>
+
+      <ion-list class="custom-list">
+        <div class="centered-label">
+          <ion-icon name="terminal" slot="start"></ion-icon>
+          <ion-label> Programming Language</ion-label>
+        </div>
+        <ion-list class="custom-list-info">
+          <ion-card *ngFor="let programminglanguage of programminglanguageList" class="custom-card-data">
+            <ion-label>
+              <ion-grid>
+                <ion-row align-items-center>
+                  <ion-col size="8">
+                    <ion-text color="light">{{ programminglanguage.name }}</ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="ion-text-end">
+                    <ion-icon *ngFor="let star of getStars(programminglanguage.score)" name="star" color="warning"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-label>
+          </ion-card>
+        </ion-list>
+    
+      </ion-list>
+
+      <ion-list class="custom-list">
+        <div class="centered-label">
+          <ion-icon name="earth" slot="start"></ion-icon>
+          <ion-label> Languages</ion-label>
+        </div>
+        <ion-list class="custom-list-info">
+          <ion-card *ngFor="let language of languageList" class="custom-card-data">
+            <ion-label>
+              <ion-grid>
+                <ion-row align-items-center>
+                  <ion-col size="8">
+                    <ion-text color="light">{{ language.name }}</ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="ion-text-end">
+                    <ion-icon *ngFor="let star of getStars(language.score)" name="star" color="warning"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-label>
+          </ion-card>
+        </ion-list>
+        
+      </ion-list>
+
+      <ion-list class="custom-list">
+        <div class="centered-label">
+          <ion-icon name="body" slot="start"></ion-icon>
+          <ion-label> Personal Skills</ion-label>
+        </div>
+        <ion-list class="custom-list-info">
+          <ion-card *ngFor="let skill of personalSkillList" class="custom-card-data">
+            <ion-label>
+              <ion-grid>
+                <ion-row align-items-center>
+                  <ion-col size="8">
+                    <ion-text color="light">{{ skill.name }}</ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="ion-text-end">
+                    <ion-icon *ngFor="let star of getStars(skill.score)" name="star" color="warning"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-label>
+          </ion-card>
+        </ion-list>      
+      </ion-list>
+    </div>
+  </form>
+</ion-content>
+
+

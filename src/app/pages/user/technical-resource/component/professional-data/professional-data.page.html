@@ -1,0 +1,66 @@
+<ion-content>
+  <form [formGroup]="professionalDataForm">
+    <ion-card class="custom-card">
+      
+      <ion-toolbar>
+        <ion-title color="light">Professional Data</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="dismissModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+  
+      <ion-card>
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Title Job</ion-label>
+          <ion-input formControlName="titleJob" type="text" color="dark"></ion-input>
+        </ion-item>
+        <div *ngIf="titleJobControl?.hasError('required') && (titleJobControl?.touched || titleJobControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Title Job is required.</ion-text>
+        </div>
+
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Company Name</ion-label>
+          <ion-input formControlName="companyName" type="text" color="dark"></ion-input>
+        </ion-item>
+        <div *ngIf="companyNameControl?.hasError('required') && (companyNameControl?.touched || companyNameControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Company Name is required.</ion-text>
+        </div>
+
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Details</ion-label>
+          <ion-input formControlName="details" type="text" color="dark"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Start Date</ion-label>
+          <ion-input formControlName="startDate" id="date" placeholder="DD/MM/YYYY"></ion-input>
+          <ion-datetime presentation="date" formControlName="startDate" (ionChange)="updateStartDate($event)"></ion-datetime>
+        </ion-item>
+        <div *ngIf="startDateControl?.hasError('required') && (startDateControl?.touched || startDateControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Start Date is required.</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">End Date</ion-label>
+          <ion-input formControlName="endDate" id="date" placeholder="DD/MM/YYYY"></ion-input>
+          <ion-datetime presentation="date" formControlName="endDate" (ionChange)="updateEndDate($event)"></ion-datetime>
+        </ion-item>
+
+      </ion-card>
+  
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button color="danger" (click)="dismissModal()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button color="success" (click)="createProfessionalData()">Create</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-card>
+  
+  </form>
+</ion-content>
+
+
