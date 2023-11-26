@@ -22,6 +22,14 @@ export class PerformanceTechnicalUserService {
     );
     this.createPerformanceResults(performanceResultCompanyA);
 
+    const performanceResultCompanyAnewUser = new PerformanceResults(
+      'Company A',
+      '1018511141',
+      '3',
+      'Fake Description of performance Results'
+    );
+    this.createPerformanceResults(performanceResultCompanyAnewUser);
+
     const performanceResultCompanyB = new PerformanceResults(
       'Company B',
       '123456789',
@@ -29,6 +37,14 @@ export class PerformanceTechnicalUserService {
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyB);
+
+    const performanceResultCompanyBnewUser = new PerformanceResults(
+      'Company B',
+      '123456789',
+      '4',
+      'Fake Description of performance Results'
+    );
+    this.createPerformanceResults(performanceResultCompanyBnewUser);
 
     const performanceResultCompanyC = new PerformanceResults(
       'Company C',
@@ -53,6 +69,22 @@ export class PerformanceTechnicalUserService {
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyE);
+
+    const performanceResultCompanyF = new PerformanceResults(
+      'Company F',
+      '123456789',
+      '5',
+      'Fake Description of performance Results'
+    );
+    this.createPerformanceResults(performanceResultCompanyF);
+
+    const performanceResultCompanyG = new PerformanceResults(
+      'Company G',
+      '123456789',
+      '5',
+      'Fake Description of performance Results'
+    );
+    this.createPerformanceResults(performanceResultCompanyG);
 
   }
 
