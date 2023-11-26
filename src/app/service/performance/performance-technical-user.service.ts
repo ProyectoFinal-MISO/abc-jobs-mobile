@@ -66,5 +66,4 @@ export class PerformanceTechnicalUserService {
     return this.performanceResults.filter(result => result.technicalIdentifier === technicalId);
   }
 
-
 }
