@@ -98,4 +98,10 @@ export class PerformanceTechnicalUserService {
     return this.performanceResults.filter(result => result.technicalIdentifier === technicalId);
   }
 
+  getLatestPerformanceResultsByTechnicalId(technicalId: string, count: number = 3): PerformanceResults[] {
+    const resultsByTechnicalId = this.getPerformanceResultsByTechnicalId(technicalId);
+    const reversedResults = resultsByTechnicalId.reverse();
+    return reversedResults.slice(0, count);
+  }
+
 }
