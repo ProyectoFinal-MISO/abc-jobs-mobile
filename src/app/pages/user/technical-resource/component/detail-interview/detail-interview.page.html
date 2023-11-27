@@ -1,0 +1,43 @@
+<ion-content>
+  <form [formGroup]="interviewDetailForm">
+    <ion-card class="custom-card">
+      
+      <ion-toolbar>
+        <ion-title color="light"> Interview Detail </ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="dismissModal()">
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+  
+      <ion-card class="custom-card-data">
+        <ion-card-header>
+          <ion-card-title>{{ interview.title }}</ion-card-title>
+          <ion-card-subtitle>{{ interview.companyName }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-label>
+          <ion-text color="dark" class="custom-detail">Observations: {{ interview.description }}</ion-text>
+          <ion-row class="ion-align-items-center">
+            <ion-text color="white" class="custom-detail">Place: {{ interview.place }}</ion-text>
+          </ion-row>
+          <ion-row class="ion-align-items-center">
+            <ion-text color="white" class="custom-detail">Link: {{ interview.link }}</ion-text>
+          </ion-row>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="6" class="ion-text-start">
+              <ion-text color="success">Start Date: {{ interview.startDay }}</ion-text>
+            </ion-col>
+            <ion-col size="6" class="ion-text-end">
+              <ion-text color="danger">End Date: {{ interview.endDay }}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-label>
+      </ion-card>
+
+    </ion-card>
+  
+  </form>
+</ion-content>
+
+

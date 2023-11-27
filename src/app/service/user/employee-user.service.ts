@@ -7,8 +7,8 @@ import { UserType } from 'src/app/model/user/user-type';
 })
 export class EmployeeUserService {
 
-  private users: Employee[] = [];
-  private userSession: Employee | null = null;
+  public users: Employee[] = [];
+  public userSession: Employee | null = null;
 
   constructor() {
     this.createDefaultUsers();
