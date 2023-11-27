@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 import { Interview } from 'src/app/model/interview/interview';
+import { InterviewResult } from 'src/app/model/interview/interview-result';
 import { EmployeeUserService } from 'src/app/service/user/employee-user.service';
 import { TechnicalUserService } from 'src/app/service/user/technical-user.service';
 
@@ -19,6 +20,7 @@ export class CreateInterviewPage implements OnInit {
   selectedGuest: string;
   startDate: string = new Date().toISOString();
   endDate: string = new Date().toISOString();
+  static nextId = 6;
 
   companies = [
     {label: 'Company A', value: 'Company A'},
@@ -102,6 +104,7 @@ export class CreateInterviewPage implements OnInit {
         const user = this.employeeService.getUserSession();
         if(user){
           const interviewData = new Interview(
+            CreateInterviewPage.nextId++,
             user.identification,
             this.createInterviewEmployeeForm.value.title,
             this.createInterviewEmployeeForm.value.description,
@@ -111,7 +114,7 @@ export class CreateInterviewPage implements OnInit {
             this.createInterviewEmployeeForm.value.endDate,
             this.selectedPlace,
             this.createInterviewEmployeeForm.value.link,
-            []
+            new InterviewResult('',''),
           );
       
           console.log(interviewData);

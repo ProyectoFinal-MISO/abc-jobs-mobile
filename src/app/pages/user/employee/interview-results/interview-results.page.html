@@ -4,16 +4,13 @@
       <div class="performance-container">
         <ion-label class="user-type-label" color="light"> Interviews For Result </ion-label>
       </div>
-      <ion-button (click)="openCreateResultInterviewModal()" class="add-button" fill="clear" color="dark">
-        <ion-icon name="add-circle"></ion-icon>
-      </ion-button>
       <div class="divider"></div>
     </div>
 
     <div class="academic-info-container">
 
       <ion-list class="custom-list">
-        <ion-card *ngFor="let interview of interviewList" class="custom-card-data">
+        <ion-card *ngFor="let interview of interviewList" class="custom-card-data" (click)="openCreateResultInterviewModal(interview)">
           <ion-label>
             <ion-grid>
               <ion-row>

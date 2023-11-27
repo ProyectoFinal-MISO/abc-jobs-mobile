@@ -28,6 +28,10 @@ export class ScheduleInterviewPage implements OnInit {
     this.loadInterviewInformation();
   }
 
+  ngOnCheck(){
+    this.loadInterviewInformation();
+  }
+
   loadInterviewInformation() {
     const user = this.employeeService.getUserSession();
     console.log("LOAD USER: ",user)

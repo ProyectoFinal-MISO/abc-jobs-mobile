@@ -14,6 +14,7 @@ export class InterviewResultsPage implements OnInit {
 
   interviewResultEmployeeForm: FormGroup;
   interviewList: Array<any> = [];
+  interviewsWithResults: Array<any> = [];
 
   constructor(private employeeService: EmployeeUserService, 
     private interviewService: InterviewService,
@@ -37,11 +38,11 @@ export class InterviewResultsPage implements OnInit {
     console.log("LOAD USER: ",user)
     if(user){
       this.interviewList = this.interviewService.getInterviewsByEmployeeId(user.identification);
-      console.log("INTERVIEW LIST: ",this.interviewList)
+      this.interviewsWithResults = this.interviewService.getInterviewsWithResultsByEmployeeUserId(user.identification);
     }
   }
 
-  async openCreateResultInterviewModal() {
+  async openCreateResultInterviewModal(interview: any) {
     const modal = await this.modalController.create({
       component: CreateResultInterviewPage,
       backdropDismiss: false,
@@ -49,21 +50,25 @@ export class InterviewResultsPage implements OnInit {
       presentingElement: await this.modalController.getTop(),
       mode: 'ios',
     });
-
+  
     modal.onDidDismiss().then((data) => {
       if (data.role === 'created' && data.data) {
-        this.addInterview(data.data);
-        this.interviewService.setInterviews(this.interviewList);
+        const createdResult = data.data;
+  
+        const index = this.interviewList.findIndex(item => item.id === interview.id);
+  
+        if (index !== -1) {
+          interview.result = createdResult;
+          this.interviewList.splice(index, 1);
+          this.interviewsWithResults.push(interview);
+
+          this.interviewService.setInterviews(this.interviewList);
+          this.interviewService.setInterviewsWithResults(this.interviewsWithResults);
+        }
       }
     });
-
+  
     return await modal.present();
   }
-
-  addInterview(interview: any) {
-    this.interviewList.push(interview);
-    console.log(this.interviewList)
-  }
-
 
 }

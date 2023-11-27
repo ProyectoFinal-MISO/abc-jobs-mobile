@@ -43,10 +43,6 @@ const routes: Routes = [
   {
     path: 'sign-up',
     loadChildren: () => import('./pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
-  },
-  {
-    path: 'create-result-interview',
-    loadChildren: () => import('./pages/user/employee/component/create-result-interview/create-result-interview.module').then( m => m.CreateResultInterviewPageModule)
   }
 ];
 @NgModule({
