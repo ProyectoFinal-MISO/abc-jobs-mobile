@@ -13,8 +13,8 @@ import { UserType } from 'src/app/model/user/user-type';
 })
 export class TechnicalUserService {
 
-  private users: TechnicalUser[] = [];
-  private userSession: TechnicalUser | null = null;
+  public users: TechnicalUser[] = [];
+  public userSession: TechnicalUser | null = null;
 
   constructor() {
     this.createDefaultUsers();
@@ -149,6 +149,42 @@ export class TechnicalUserService {
   getUserSession(): TechnicalUser | null {
     console.log(this.userSession)
     return this.userSession;
+  }
+
+  getUsersMap(): Map<string, string> {
+    const usersMap = new Map<string, string>();
+
+    this.users.forEach(user => {
+      const fullName = `${user.name} ${user.lastName}`;
+      usersMap.set(fullName, user.identification);
+    });
+
+    return usersMap;
+  }
+
+
+  getUsersMapByIds(userIds: string[]): Map<string, string> {
+    const usersMap = new Map<string, string>();
+
+    this.users
+      .filter(user => userIds.includes(user.identification))
+      .forEach(user => {
+        const fullName = `${user.name} ${user.lastName}`;
+        usersMap.set(fullName, user.identification);
+      });
+
+    return usersMap;
+  }
+
+  generateGuestsList(): { key: string, value: string }[] {
+    const usersMap = this.getUsersMap();
+  
+    const guestsList = Array.from(usersMap).map(([key, value]) => ({
+      key: key,
+      value: value
+    }));
+  
+    return guestsList;
   }
 
 }

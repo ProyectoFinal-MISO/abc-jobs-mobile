@@ -15,6 +15,7 @@ export class PerformanceResultDetailPage implements OnInit {
   constructor(private navParams: NavParams,
      private modalController: ModalController,
      private formBuilder: FormBuilder) {
+      this.performanceResult = this.navParams.get('performanceResult');
       this.performanceDetailForm = this.formBuilder.group({});
   }
 

@@ -1,0 +1,97 @@
+<ion-content>
+  <form [formGroup]="createInterviewEmployeeForm">
+    <ion-card class="custom-card">
+      
+      <ion-toolbar>
+        <ion-title color="light">Create Interview</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="dismissModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+  
+      <ion-card>
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Title</ion-label>
+          <ion-input formControlName="title" type="text" color="dark"></ion-input>
+        </ion-item>
+        <div *ngIf="titleControl?.hasError('required') && (titleControl?.touched || titleControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Title is required.</ion-text>
+        </div>
+
+        <ion-item class="rounded-select-input">
+          <ion-label position="stacked">Company</ion-label>
+          <ion-select formControlName="company" (ionChange)="optionsCompany($event)" interface="popover">
+            <ion-select-option *ngFor="let company of companies" [value]="company.value">
+              {{ company.label }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Description</ion-label>
+          <ion-input formControlName="description" type="text" color="dark"></ion-input>
+        </ion-item>
+        <div *ngIf="descriptionControl?.hasError('required') && (descriptionControl?.touched || descriptionControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Description is required.</ion-text>
+        </div>
+
+        <ion-item class="rounded-select-input">
+          <ion-label position="stacked">Place</ion-label>
+          <ion-select formControlName="place" (ionChange)="optionsPlace($event)" interface="popover">
+            <ion-select-option *ngFor="let place of places" [value]="place.value">
+              {{ place.label }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Start Date</ion-label>
+          <ion-input formControlName="startDate" id="date" placeholder="DD/MM/YYYY HH:MM:SS"></ion-input>
+          <ion-datetime presentation="date" formControlName="startDate" (ionChange)="updateStartDate($event)"></ion-datetime>
+        </ion-item>
+        <div *ngIf="startDateControl?.hasError('required') && (startDateControl?.touched || startDateControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Start Date is required.</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">End Date</ion-label>
+          <ion-input formControlName="endDate" id="date" placeholder="DD/MM/YYYY DD/MM/YYYY HH:MM:SS"></ion-input>
+          <ion-datetime presentation="date" formControlName="endDate" (ionChange)="updateEndDate($event)"></ion-datetime>
+        </ion-item>
+        <div *ngIf="endDateControl?.hasError('required') && (endDateControl?.touched || endDateControl?.dirty)" class="error-message">
+          <ion-text color="danger">The End Date is required.</ion-text>
+        </div>
+
+        <ion-item class="rounded-select-input">
+          <ion-label position="stacked">Guest</ion-label>
+          <ion-select formControlName="guest" (ionChange)="optionsGuest($event)" interface="popover">
+            <ion-select-option *ngFor="let guest of guests" [value]="guest.value">
+              {{ guest.key }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Link</ion-label>
+          <ion-input formControlName="link" type="text" color="dark"></ion-input>
+        </ion-item>
+        <div *ngIf="linkControl?.hasError('required') && (linkControl?.touched || linkControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Link is required.</ion-text>
+        </div>
+
+      </ion-card>
+  
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button color="danger" (click)="dismissModal()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button color="success" (click)="createInterview()">Create</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-card>
+  
+  </form>
+</ion-content>
