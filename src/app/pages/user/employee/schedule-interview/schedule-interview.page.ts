@@ -28,6 +28,10 @@ export class ScheduleInterviewPage implements OnInit {
     this.loadInterviewInformation();
   }
 
+  ngOnCheck(){
+    this.loadInterviewInformation();
+  }
+
   loadInterviewInformation() {
     const user = this.employeeService.getUserSession();
     console.log("LOAD USER: ",user)
@@ -49,7 +53,6 @@ export class ScheduleInterviewPage implements OnInit {
     modal.onDidDismiss().then((data) => {
       if (data.role === 'created' && data.data) {
         this.addInterview(data.data);
-        // Aquí establece las entrevistas después de agregar la nueva entrevista
         this.interviewService.setInterviews(this.interviewList);
       }
     });

@@ -1,13 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>interview-results</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="interviewWithResultsEmployeeForm">
+    <div class="logo-container">
+      <div class="performance-container">
+        <ion-label class="user-type-label" color="light"> My Interviews Results </ion-label>
+      </div>
+      <div class="divider"></div>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">interview-results</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="academic-info-container">
+
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let interview of interviewWithResultsList" class="custom-card-data" (click)="openDetailInterviewResultModal(interview)">
+          <ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-text color="light" class="title-text">{{ interview.title }} , {{ interview.companyName}}</ion-text>
+                </ion-col>
+              </ion-row>
+              <ion-row align-items-center>
+                <ion-col size="6">
+                  <ion-text color="success">{{ interview.startDay}}</ion-text>
+                </ion-col>
+                <ion-col size="6" class="ion-text-end">
+                  <ion-text color="danger">{{ interview.endDay}}</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-card>
+      </ion-list>
+
+    </div>
+  </form>
 </ion-content>

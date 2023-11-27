@@ -1,0 +1,44 @@
+<ion-content>
+  <form [formGroup]="createInterviewEmployeeForm">
+    <ion-card class="custom-card">
+      
+      <ion-toolbar>
+        <ion-title color="light">Create Interview</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="dismissModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+  
+      <ion-card>
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Observations</ion-label>
+          <ion-input formControlName="observations" type="text" color="dark"></ion-input>
+        </ion-item>
+        <div *ngIf="observationsControl?.hasError('required') && (observationsControl?.touched || observationsControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Observation is required.</ion-text>
+        </div>
+
+        <ion-item class="rounded-input">
+          <ion-label position="stacked">Retrospective</ion-label>
+          <ion-input formControlName="retrospective" type="text" color="dark"></ion-input>
+        </ion-item>
+        <div *ngIf="retrospectiveControl?.hasError('required') && (retrospectiveControl?.touched || retrospectiveControl?.dirty)" class="error-message">
+          <ion-text color="danger">The Retrospective is required.</ion-text>
+        </div>
+      </ion-card>
+  
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button color="danger" (click)="dismissModal()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button color="success" (click)="createInterviewResult()">Create</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-card>
+  
+  </form>
+</ion-content>
+

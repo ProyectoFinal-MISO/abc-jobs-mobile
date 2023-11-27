@@ -6,64 +6,9 @@ import { Interview } from 'src/app/model/interview/interview';
 })
 export class InterviewService {
   
-  public entrevistas: Interview[] = [
-    {
-      employeeId: '123456789',
-      title: 'Test',
-      description: 'test',
-      companyName: 'Company A',
-      guest: '123456789',
-      startDay: "02/05/2021, 17:21:00",
-      endDay: "02/05/2021, 17:30:00",
-      place: 'Virtual',
-      link: 'link'
-    },
-    {
-      employeeId: '123456789',
-      title: 'Test',
-      description: 'test',
-      companyName: 'Company A',
-      guest: '123456789',
-      startDay: "02/05/2021, 17:21:00",
-      endDay: "02/05/2021, 17:30:00",
-      place: 'Virtual',
-      link: 'link'
-    },
-    {
-      employeeId: '123456789',
-      title: 'Test',
-      description: 'test',
-      companyName: 'Company A',
-      guest: '123456789',
-      startDay: "02/05/2021, 17:21:00",
-      endDay: "02/05/2021, 17:30:00",
-      place: 'Virtual',
-      link: 'link'
-    },
-    {
-      employeeId: '123456789',
-      title: 'Test',
-      description: 'test',
-      companyName: 'Company A',
-      guest: '1018511141',
-      startDay: "02/05/2021, 17:21:00",
-      endDay: "02/05/2021, 17:30:00",
-      place: 'Virtual',
-      link: 'link'
-    },
-    {
-      employeeId: '123456789',
-      title: 'Test',
-      description: 'test',
-      companyName: 'Company A',
-      guest: '1018511141',
-      startDay: "02/05/2021, 17:21:00",
-      endDay: "02/05/2021, 17:30:00",
-      place: 'Virtual',
-      link: 'link'
-    }
+  public entrevistas: Interview[] = []; 
 
-  ]; 
+  public entrevistasConResultados: Interview[] = [];
 
   constructor() {
   }
@@ -99,7 +44,23 @@ export class InterviewService {
   }
 
   setInterviews(interviews: Interview[]): void {
+    console.log(interviews);
     this.entrevistas =interviews;
+  }
+
+  setInterviewsWithResults(interviewsWithResults: Interview[]): void {
+    console.log(interviewsWithResults);
+    this.entrevistasConResultados = interviewsWithResults;
+  }
+
+  getInterviewsWithResultsByEmployeeUserId(employeeUserId: string): any[] {
+    console.log(this.entrevistasConResultados);
+    return this.entrevistasConResultados.filter(entrevista => entrevista.employeeId === employeeUserId);
+  }
+
+  getInterviewsWithResultsByTechnicalUserId(technicalUserId: string): any[] {
+    console.log(this.entrevistasConResultados);
+    return this.entrevistasConResultados.filter(entrevista => entrevista.guest === technicalUserId);
   }
 
 }
