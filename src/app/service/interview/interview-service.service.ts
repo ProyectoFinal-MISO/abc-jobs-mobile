@@ -16,7 +16,8 @@ export class InterviewService {
       startDay: "02/05/2021, 17:21:00",
       endDay: "02/05/2021, 17:30:00",
       place: 'Virtual',
-      link: 'link'
+      link: 'link',
+      result: []
     },
     {
       employeeId: '123456789',
@@ -27,7 +28,8 @@ export class InterviewService {
       startDay: "02/05/2021, 17:21:00",
       endDay: "02/05/2021, 17:30:00",
       place: 'Virtual',
-      link: 'link'
+      link: 'link',
+      result: []
     },
     {
       employeeId: '123456789',
@@ -38,7 +40,8 @@ export class InterviewService {
       startDay: "02/05/2021, 17:21:00",
       endDay: "02/05/2021, 17:30:00",
       place: 'Virtual',
-      link: 'link'
+      link: 'link',
+      result: []
     },
     {
       employeeId: '123456789',
@@ -49,7 +52,8 @@ export class InterviewService {
       startDay: "02/05/2021, 17:21:00",
       endDay: "02/05/2021, 17:30:00",
       place: 'Virtual',
-      link: 'link'
+      link: 'link',
+      result: []
     },
     {
       employeeId: '123456789',
@@ -60,7 +64,8 @@ export class InterviewService {
       startDay: "02/05/2021, 17:21:00",
       endDay: "02/05/2021, 17:30:00",
       place: 'Virtual',
-      link: 'link'
+      link: 'link',
+      result: []
     }
 
   ]; 

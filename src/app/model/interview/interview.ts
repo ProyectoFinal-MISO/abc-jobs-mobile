@@ -9,7 +9,8 @@ export class Interview{
         public startDay: string,
         public endDay: string,
         public place: string,
-        public link: string
+        public link: string,
+        public result: any[]
     ){}
 
 }

@@ -110,7 +110,8 @@ export class CreateInterviewPage implements OnInit {
             this.createInterviewEmployeeForm.value.startDate,
             this.createInterviewEmployeeForm.value.endDate,
             this.selectedPlace,
-            this.createInterviewEmployeeForm.value.link
+            this.createInterviewEmployeeForm.value.link,
+            []
           );
       
           console.log(interviewData);
