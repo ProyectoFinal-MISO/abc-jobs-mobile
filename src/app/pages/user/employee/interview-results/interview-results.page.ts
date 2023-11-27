@@ -28,6 +28,10 @@ export class InterviewResultsPage implements OnInit {
     this.loadInterviewInformation();
   }
 
+  ngDoCheck() {
+    this.loadInterviewInformation();
+  }
+
   loadInterviewInformation() {
     const user = this.employeeService.getUserSession();
     console.log("LOAD USER: ",user)
