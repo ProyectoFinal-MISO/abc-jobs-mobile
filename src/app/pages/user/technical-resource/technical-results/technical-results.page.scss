@@ -1,0 +1,86 @@
+.logo-container {
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+}
+
+.user-type-label {
+    font-family: 'Jura', sans-serif;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.divider {
+    flex-grow: 1;
+    height: 5px;
+    background-color: #000;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px
+}
+
+.performance-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.custom-list {
+    --ion-background-color: transparent;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.custom-card-data{
+    background-color: #283138;
+}
+
+.add-button{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.add-button ion-icon {
+    font-size: 30px; 
+}
+
+.title-text.smaller-text {
+    font-size: 14px; 
+    margin-left: 10px; 
+    margin-top: 10px;
+  }
+  
+  .score-box {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50px; 
+    height: 30px; 
+    margin-left: 80%;
+    margin-bottom: 10px;
+    --background-color: red; 
+    background-color: var(--background-color);
+  }
+  
+  .score-box.success {
+    --background-color: rgb(129, 244, 129);
+  }
+  
+  .score-box.warning {
+    --background-color: rgb(247, 247, 124);
+  }
+  
+  .score-box.danger {
+    --background-color: rgb(251, 143, 143);
+  }
+  
+  .score-text {
+    font-size: 16px; 
+  }

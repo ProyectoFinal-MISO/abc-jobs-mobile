@@ -61,8 +61,6 @@ export class CreateTechnicalResultPage implements OnInit {
           this.createTechnicalTestForm.value.score,
           this.createTechnicalTestForm.value.observations
         );
-        console.log('SCORE', this.createTechnicalTestForm.value.score);
-    
         this.modalController.dismiss(technicalResultData, 'created');
         
     }else{

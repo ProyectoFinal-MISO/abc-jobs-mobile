@@ -60,7 +60,7 @@ export class TechnicalResultsPage implements OnInit {
   
         if (index !== -1) {
           techTest.status = TestStatus.Qualified;
-          techTest.result = createdResult;
+          techTest.testResult = createdResult;
           this.techTestList.splice(index, 1);
           this.techTestWithResults.push(techTest);
           this.technicalTestService.createTechnicalTestWithResult(techTest);
@@ -69,6 +69,18 @@ export class TechnicalResultsPage implements OnInit {
     });
   
     return await modal.present();
+  }
+
+  getScoreColor(score: number): string {
+    if (score >= 0 && score <= 4) {
+      return 'danger';
+    } else if (score >= 5 && score <= 7) {
+      return 'warning';
+    } else if (score >= 8 && score <= 10) {
+      return 'success';
+    } else {
+      return 'light'; 
+    }
   }
 
 }
