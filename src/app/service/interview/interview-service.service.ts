@@ -43,15 +43,15 @@ export class InterviewService {
     return Array.from(userIdsSet);
   }
 
-  setInterviews(interviews: Interview[]): void {
-    console.log(interviews);
-    this.entrevistas =interviews;
+  createInterviewWithResult(entrevista: Interview): { success: boolean, error?: string } {
+    const index = this.entrevistas.findIndex(item => item.id === entrevista.id);
+    if (index !== -1) {
+      this.entrevistas.splice(index, 1);
+      this.entrevistasConResultados.push(entrevista);
+    }
+    return { success: true };
   }
 
-  setInterviewsWithResults(interviewsWithResults: Interview[]): void {
-    console.log(interviewsWithResults);
-    this.entrevistasConResultados = interviewsWithResults;
-  }
 
   getInterviewsWithResultsByEmployeeUserId(employeeUserId: string): any[] {
     console.log(this.entrevistasConResultados);

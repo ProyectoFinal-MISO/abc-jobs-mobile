@@ -53,7 +53,6 @@ export class ScheduleInterviewPage implements OnInit {
     modal.onDidDismiss().then((data) => {
       if (data.role === 'created' && data.data) {
         this.addInterview(data.data);
-        this.interviewService.setInterviews(this.interviewList);
       }
     });
 
@@ -62,6 +61,7 @@ export class ScheduleInterviewPage implements OnInit {
 
   addInterview(interview: any) {
     this.interviewList.push(interview);
+    this.interviewService.createInterview(interview);
     console.log(this.interviewList)
   }
 

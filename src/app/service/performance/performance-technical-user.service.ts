@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PerformanceResults } from 'src/app/model/performance/performance-results';
+import { TestStatus } from 'src/app/model/test-status';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class PerformanceTechnicalUserService {
       'Company A',
       '123456789',
       '3',
+      TestStatus.Qualified,
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyA);
@@ -26,6 +28,7 @@ export class PerformanceTechnicalUserService {
       'Company A',
       '1018511141',
       '3',
+      TestStatus.Qualified,
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyAnewUser);
@@ -34,6 +37,7 @@ export class PerformanceTechnicalUserService {
       'Company B',
       '123456789',
       '4',
+      TestStatus.Qualified,
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyB);
@@ -42,6 +46,7 @@ export class PerformanceTechnicalUserService {
       'Company B',
       '123456789',
       '4',
+      TestStatus.Qualified,
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyBnewUser);
@@ -50,6 +55,7 @@ export class PerformanceTechnicalUserService {
       'Company C',
       '123456789',
       '1',
+      TestStatus.Qualified,
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyC);
@@ -58,6 +64,7 @@ export class PerformanceTechnicalUserService {
       'Company D',
       '123456789',
       '2',
+      TestStatus.Qualified,
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyD);
@@ -66,6 +73,7 @@ export class PerformanceTechnicalUserService {
       'Company E',
       '123456789',
       '1',
+      TestStatus.Qualified,
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyE);
@@ -74,6 +82,7 @@ export class PerformanceTechnicalUserService {
       'Company F',
       '123456789',
       '5',
+      TestStatus.Qualified,
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyF);
@@ -82,6 +91,7 @@ export class PerformanceTechnicalUserService {
       'Company G',
       '123456789',
       '5',
+      TestStatus.Qualified,
       'Fake Description of performance Results'
     );
     this.createPerformanceResults(performanceResultCompanyG);
