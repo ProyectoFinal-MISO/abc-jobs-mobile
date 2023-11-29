@@ -1,13 +1,13 @@
 import { TestStatus } from "../test-status";
 
-export class PerformanceResults{
+export class TechnicalTestResult{
 
     constructor(
+        public testType: string,
         public companyName: string,
-        public technicalIdentifier: string,
-        public score: string,
         public status: TestStatus,
-        public observations: string,
+        public score: number,
+        public observations: string
     ){}
 
 }

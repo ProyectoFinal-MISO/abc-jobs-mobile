@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeUserService } from 'src/app/service/user/employee-user.service';
 import { InterviewService } from 'src/app/service/interview/interview-service.service';
 import { ModalController } from '@ionic/angular';
+import { TestStatus } from 'src/app/model/test-status';
 
 @Component({
   selector: 'app-interview-results',
@@ -58,12 +59,11 @@ export class InterviewResultsPage implements OnInit {
         const index = this.interviewList.findIndex(item => item.id === interview.id);
   
         if (index !== -1) {
+          interview.status = TestStatus.Qualified;
           interview.result = createdResult;
           this.interviewList.splice(index, 1);
           this.interviewsWithResults.push(interview);
-
-          this.interviewService.setInterviews(this.interviewList);
-          this.interviewService.setInterviewsWithResults(this.interviewsWithResults);
+          this.interviewService.createInterviewWithResult(interview);
         }
       }
     });

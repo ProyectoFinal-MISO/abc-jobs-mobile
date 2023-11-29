@@ -1,3 +1,4 @@
+import { TestStatus } from "../test-status";
 import { InterviewResult } from "./interview-result";
 
 export class Interview{
@@ -13,6 +14,7 @@ export class Interview{
         public endDay: string,
         public place: string,
         public link: string,
+        public status: TestStatus,
         public result: InterviewResult
     ){}
 
