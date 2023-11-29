@@ -16,8 +16,7 @@ export class CreateResultInterviewPage implements OnInit {
   formSubmitted = false;
 
   constructor(private employeeService: EmployeeUserService,
-    private technicalService: TechnicalUserService
-    ,private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private modalController: ModalController,
     private toastController: ToastController) { 
       this.createInterviewEmployeeForm = this.formBuilder.group({

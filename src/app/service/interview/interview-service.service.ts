@@ -15,7 +15,6 @@ export class InterviewService {
 
   createInterview(entrevista: Interview): { success: boolean, error?: string } {
     this.entrevistas.push(entrevista);
-    console.log(this.entrevistas);
     return { success: true };
   }
 
@@ -24,12 +23,10 @@ export class InterviewService {
   }
 
   getInterviewsByEmployeeId(employeeId: string): any[] {
-    console.log(this.entrevistas);
     return this.entrevistas.filter(entrevista => entrevista.employeeId === employeeId);
   }
 
   getInterviewsByTechnicalUserId(technicalUserId: string): any[] {
-    console.log("usuario:",technicalUserId);
     return this.entrevistas.filter(entrevista => entrevista.guest === technicalUserId);
   }
 
@@ -54,12 +51,10 @@ export class InterviewService {
 
 
   getInterviewsWithResultsByEmployeeUserId(employeeUserId: string): any[] {
-    console.log(this.entrevistasConResultados);
     return this.entrevistasConResultados.filter(entrevista => entrevista.employeeId === employeeUserId);
   }
 
   getInterviewsWithResultsByTechnicalUserId(technicalUserId: string): any[] {
-    console.log(this.entrevistasConResultados);
     return this.entrevistasConResultados.filter(entrevista => entrevista.guest === technicalUserId);
   }
 

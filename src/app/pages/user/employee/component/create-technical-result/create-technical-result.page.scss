@@ -1,0 +1,30 @@
+.red-score {
+    --ion-color-base: red;
+  }
+  
+  .yellow-score {
+    --ion-color-base: yellow;
+  }
+  
+  .green-score {
+    --ion-color-base: green;
+  }
+
+  ion-toolbar {
+    --background: #2e3238;
+}
+
+.rounded-input-additional {
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: white;
+    font-family: 'Jura', sans-serif;;
+}
+
+
+ion-range {
+  height: 30px;
+  border-radius: 10px;
+}

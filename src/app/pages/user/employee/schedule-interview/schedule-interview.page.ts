@@ -28,7 +28,7 @@ export class ScheduleInterviewPage implements OnInit {
     this.loadInterviewInformation();
   }
 
-  ngOnCheck(){
+  ngDoCheck(){
     this.loadInterviewInformation();
   }
 
