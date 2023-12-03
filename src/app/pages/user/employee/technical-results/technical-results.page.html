@@ -1,13 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>technical-results</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="techResultEmployeeForm">
+    <div class="logo-container">
+      <div class="performance-container">
+        <ion-label class="user-type-label" color="light"> Technical Test For Result </ion-label>
+      </div>
+      <div class="divider"></div>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">technical-results</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="academic-info-container">
+
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let techTest of techTestList" class="custom-card-data" (click)="openCreateResultTechnicalTestModal(techTest)">
+          <ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-text color="light" class="title-text">{{ techTest.testType }} , {{ techTest.companyName}}</ion-text>
+                </ion-col>
+              </ion-row>
+              <ion-row align-items-center>
+                <ion-col size="6">
+                  <ion-text color="success">{{ techTest.status}}</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-card>
+      </ion-list>
+
+    </div>
+  </form>
 </ion-content>

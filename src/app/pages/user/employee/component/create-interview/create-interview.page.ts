@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 import { Interview } from 'src/app/model/interview/interview';
 import { InterviewResult } from 'src/app/model/interview/interview-result';
+import { TestStatus } from 'src/app/model/test-status';
 import { EmployeeUserService } from 'src/app/service/user/employee-user.service';
 import { TechnicalUserService } from 'src/app/service/user/technical-user.service';
 
@@ -114,6 +115,7 @@ export class CreateInterviewPage implements OnInit {
             this.createInterviewEmployeeForm.value.endDate,
             this.selectedPlace,
             this.createInterviewEmployeeForm.value.link,
+            TestStatus.Created,
             new InterviewResult('',''),
           );
       

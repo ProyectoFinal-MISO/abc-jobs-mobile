@@ -1,13 +1,24 @@
 <ion-content>
-  <form [formGroup]="createInterviewEmployeeForm">
+  <form [formGroup]="createTechnicalTestForm">
     <ion-card class="custom-card">
       
       <ion-toolbar>
-        <ion-title color="light">Create Interview Result</ion-title>
+        <ion-title color="light">Create Technical Test Result</ion-title>
         <ion-buttons slot="end">
           <ion-button color="light" (click)="dismissModal()">Close</ion-button>
         </ion-buttons>
       </ion-toolbar>
+
+      <ion-item class="rounded-input">
+        <ion-label position="stacked">Score</ion-label>
+        <ion-range formControlName="score" min="0" max="10" snaps="true" pin="true" [(ngModel)]="selectedSegments" color="{{ getScoreColor() }}">
+          <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">10</ion-label>
+        </ion-range>
+      </ion-item>
+      <div *ngIf="scoreControl?.hasError('required') && (scoreControl?.touched || scoreControl?.dirty)" class="error-message">
+        <ion-text color="danger">The Score is required.</ion-text>
+      </div>
   
       <ion-card>
         <ion-item class="rounded-input">
@@ -17,14 +28,6 @@
         <div *ngIf="observationsControl?.hasError('required') && (observationsControl?.touched || observationsControl?.dirty)" class="error-message">
           <ion-text color="danger">The Observation is required.</ion-text>
         </div>
-
-        <ion-item class="rounded-input">
-          <ion-label position="stacked">Retrospective</ion-label>
-          <ion-input formControlName="retrospective" type="text" color="dark"></ion-input>
-        </ion-item>
-        <div *ngIf="retrospectiveControl?.hasError('required') && (retrospectiveControl?.touched || retrospectiveControl?.dirty)" class="error-message">
-          <ion-text color="danger">The Retrospective is required.</ion-text>
-        </div>
       </ion-card>
   
       <ion-footer>
@@ -33,7 +36,7 @@
             <ion-button color="danger" (click)="dismissModal()">Cancel</ion-button>
           </ion-buttons>
           <ion-buttons slot="end">
-            <ion-button color="success" (click)="createInterviewResult()">Create</ion-button>
+            <ion-button color="success" (click)="createTechnicalTestResult()">Create</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-footer>
@@ -41,4 +44,5 @@
   
   </form>
 </ion-content>
+
 

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { TechnicalResultsPageRoutingModule } from './technical-results-routing.module';
 
 import { TechnicalResultsPage } from './technical-results.page';
+import { CreateTechnicalResultPageModule } from '../component/create-technical-result/create-technical-result.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { TechnicalResultsPage } from './technical-results.page';
     FormsModule,
     IonicModule,
     TechnicalResultsPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CreateTechnicalResultPageModule
   ],
   declarations: [TechnicalResultsPage]
 })

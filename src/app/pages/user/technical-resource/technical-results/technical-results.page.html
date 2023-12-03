@@ -1,13 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>technical-results</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="technicalTestWithResultsForm">
+    <div class="logo-container">
+      <div class="performance-container">
+        <ion-label class="user-type-label" color="light"> My Technical Test Results </ion-label>
+      </div>
+      <div class="divider"></div>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">technical-results</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="academic-info-container">
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let techTest of technicalTestWithResultsList" class="custom-card-data" (click)="openDetailTechTestResultModal(techTest)">
+          <ion-card-title color="light" class="title-text smaller-text">
+            {{ techTest.testType }}, {{ techTest.companyName }}
+          </ion-card-title>
+          <ion-card-subtitle color="danger" class="title-text smaller-text">
+            {{ techTest.status }}
+          </ion-card-subtitle>
+          <div class="score-box" [class.success]="getScoreColor(techTest.testResult.score) === 'green'" [class.warning]="getScoreColor(techTest.testResult.score) === 'yellow'" [class.danger]="getScoreColor(techTest.testResult.score) === 'red'">
+            <ion-text color="dark" class="score-text">
+              {{ (techTest.testResult.score * 10).toFixed(0) }}%
+            </ion-text>
+          </div>
+        </ion-card>
+      </ion-list>
+    </div>
+  </form>
 </ion-content>

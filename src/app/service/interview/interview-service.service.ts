@@ -15,7 +15,6 @@ export class InterviewService {
 
   createInterview(entrevista: Interview): { success: boolean, error?: string } {
     this.entrevistas.push(entrevista);
-    console.log(this.entrevistas);
     return { success: true };
   }
 
@@ -24,12 +23,10 @@ export class InterviewService {
   }
 
   getInterviewsByEmployeeId(employeeId: string): any[] {
-    console.log(this.entrevistas);
     return this.entrevistas.filter(entrevista => entrevista.employeeId === employeeId);
   }
 
   getInterviewsByTechnicalUserId(technicalUserId: string): any[] {
-    console.log("usuario:",technicalUserId);
     return this.entrevistas.filter(entrevista => entrevista.guest === technicalUserId);
   }
 
@@ -43,23 +40,21 @@ export class InterviewService {
     return Array.from(userIdsSet);
   }
 
-  setInterviews(interviews: Interview[]): void {
-    console.log(interviews);
-    this.entrevistas =interviews;
+  createInterviewWithResult(entrevista: Interview): { success: boolean, error?: string } {
+    const index = this.entrevistas.findIndex(item => item.id === entrevista.id);
+    if (index !== -1) {
+      this.entrevistas.splice(index, 1);
+      this.entrevistasConResultados.push(entrevista);
+    }
+    return { success: true };
   }
 
-  setInterviewsWithResults(interviewsWithResults: Interview[]): void {
-    console.log(interviewsWithResults);
-    this.entrevistasConResultados = interviewsWithResults;
-  }
 
   getInterviewsWithResultsByEmployeeUserId(employeeUserId: string): any[] {
-    console.log(this.entrevistasConResultados);
     return this.entrevistasConResultados.filter(entrevista => entrevista.employeeId === employeeUserId);
   }
 
   getInterviewsWithResultsByTechnicalUserId(technicalUserId: string): any[] {
-    console.log(this.entrevistasConResultados);
     return this.entrevistasConResultados.filter(entrevista => entrevista.guest === technicalUserId);
   }
 
