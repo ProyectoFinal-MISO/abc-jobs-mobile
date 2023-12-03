@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController, NavParams } from '@ionic/angular';
+import { TestStatus } from 'src/app/model/test-status';
 
 @Component({
   selector: 'app-detail-interview',
@@ -24,6 +25,11 @@ export class DetailInterviewPage implements OnInit {
 
  dismissModal() {
    this.modalController.dismiss();
+ }
+
+ endInterview(){
+  this.interview.status = TestStatus.Finished;
+  this.dismissModal();
  }
 
 }

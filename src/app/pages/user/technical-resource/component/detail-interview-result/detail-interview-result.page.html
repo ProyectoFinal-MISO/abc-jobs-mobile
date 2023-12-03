@@ -11,18 +11,20 @@
         </ion-buttons>
       </ion-toolbar>
   
-      <ion-card class="custom-card-data">
+      <ion-card class="custom-card-data" [ngClass]="{'active-card': interviewResult.status === 'Created', 'finished-card': interviewResult.status === 'Finished', 'expired-card': interviewResult.status === 'Expired', 'qualified-card': interviewResult.status === 'Qualified'}">
         <ion-card-header>
           <ion-card-title>{{ interviewResult.title }}, {{ interviewResult.companyName }}</ion-card-title>
           <ion-card-subtitle color="danger">{{ interviewResult.status }}</ion-card-subtitle>
         </ion-card-header>
         <ion-label>
-          <ion-text color="dark" class="custom-detail">Observations: {{ interviewResult.description }}</ion-text>
-          <ion-row class="ion-align-items-center">
-            <ion-text color="white" class="custom-detail">Place: {{ interviewResult.place }}</ion-text>
+          <ion-row class="custom-detail-container">
+            <ion-text color="dark">Description: {{ interviewResult.description }}</ion-text>
           </ion-row>
-          <ion-row class="ion-align-items-center">
-            <ion-text color="white" class="custom-detail">Link: {{ interviewResult.link }}</ion-text>
+          <ion-row class="custom-detail-container">
+            <ion-text color="dark">Place: {{ interviewResult.place }}</ion-text>
+          </ion-row>
+          <ion-row class="custom-detail-container" >
+            <ion-text color="dark">Link: {{ interviewResult.link }}</ion-text>
           </ion-row>
           <ion-row class="ion-align-items-center">
             <ion-col size="6" class="ion-text-start">
@@ -32,11 +34,14 @@
               <ion-text color="danger">End Date: {{ interviewResult.endDay }}</ion-text>
             </ion-col>
           </ion-row>
-          <ion-row class="ion-align-items-center">
-            <ion-text color="white" class="custom-detail">Observations: {{ interviewResult.result.observations }}</ion-text>
+          <ion-row class="result-title">
+            <ion-text color="light">Interview Results:</ion-text>
           </ion-row>
-          <ion-row class="ion-align-items-center">
-            <ion-text color="white" class="custom-detail">Retrospective: {{ interviewResult.result.retrospective }}</ion-text>
+          <ion-row class="custom-detail-container">
+            <ion-text color="dark" >Observations: {{ interviewResult.result.observations }}</ion-text>
+          </ion-row>
+          <ion-row class="custom-detail-container">
+            <ion-text color="dark" >Retrospective: {{ interviewResult.result.retrospective }}</ion-text>
           </ion-row>
         </ion-label>
       </ion-card>

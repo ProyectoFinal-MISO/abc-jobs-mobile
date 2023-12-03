@@ -2,8 +2,21 @@ ion-toolbar {
     --background: #2e3238;
   }
 
+  .custom-card {
+    background-color: transparent;
+  }
+
   .custom-card-data {
     background-color: #2e3238;
+  }
+
+  .custom-detail-container {
+    background-color: #ffffff; 
+    padding: 10px; 
+    border-radius: 10px; 
+    margin-top: 10px; 
+    margin-left: 15px;
+    margin-right: 15px;
   }
   
   ion-card-title,
@@ -12,18 +25,23 @@ ion-toolbar {
   }
   
   .custom-detail {
-    color: white;
+    color: black;
     margin-left: 15px;
   }
   
 
   ion-text.color-success {
-    color: green;
+    color: rgb(106, 189, 106);
     margin-left: 15px;
   }
   
   ion-text.color-danger {
-    color: red;
+    color: rgb(227, 113, 113);
+  }
+
+  .ion-align-items-center{
+    margin-left: 10px;
+    margin-top: 10px;
   }
   
   .custom-detail-container {
@@ -33,10 +51,38 @@ ion-toolbar {
     margin-top: 10px;
     margin-left: 15px;
     margin-right: 15px;
-    margin-bottom: 30px;
   }
   
   .larger-title {
     font-size: 15px;
     margin-left: 15px;
   }
+
+  .active-card {
+    border: 3px solid rgb(255, 220, 47); 
+}
+  
+.finished-card {
+    border: 3px solid rgb(0, 116, 129);
+}
+
+.expired-card {
+    border: 3px solid rgb(255, 103, 103);
+}
+
+.qualified-card {
+    border: 3px solid rgb(50, 213, 58);
+}
+
+.end-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --color: #003366; 
+  color: #ffffff;
+  margin: 0 auto; 
+}
+
+.end-button ion-icon {
+  margin-right: 8px;
+}

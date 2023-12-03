@@ -11,7 +11,7 @@
         </ion-buttons>
       </ion-toolbar>
   
-      <ion-card class="custom-card-data">
+      <ion-card class="custom-card-data" [ngClass]="{'active-card': performanceResult.status === 'Created', 'finished-card': performanceResult.status === 'Finished', 'expired-card': performanceResult.status === 'Expired', 'qualified-card': performanceResult.status === 'Qualified'}">
         <ion-label>
           <ion-grid>
             <ion-row align-items-center>

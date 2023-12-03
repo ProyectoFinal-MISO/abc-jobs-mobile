@@ -1,6 +1,6 @@
 .logo-container {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
     position: relative;
 }
 
@@ -38,4 +38,20 @@
 
 .custom-card-data{
     background-color: #283138;
+}
+
+.active-card {
+    border: 3px solid rgb(255, 220, 47); 
+}
+  
+.finished-card {
+    border: 3px solid rgb(0, 116, 129);
+}
+
+.expired-card {
+    border: 3px solid rgb(255, 103, 103);
+}
+
+.qualified-card {
+    border: 3px solid rgb(50, 213, 58);
 }

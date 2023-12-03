@@ -36,7 +36,6 @@ export class TechnicalResultsPage implements OnInit {
 
   loadTechTestInformation() {
     const user = this.employeeService.getUserSession();
-    console.log("LOAD USER: ",user)
     if(user){
       this.techTestList = this.technicalTestService.getTechnicalTestCreatedByEmployeeId(user.identification);
       this.techTestWithResults = this.technicalTestService.getTechnicalTestWithResultsByEmployeeUserId(user.identification);

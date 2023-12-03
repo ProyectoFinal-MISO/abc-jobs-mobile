@@ -26,7 +26,7 @@ export class TechnicalTestService {
         TechnicalTestType.BackTest,
         "Company A",
         "1234567890",
-        TestStatus.Created,
+        TestStatus.Finished,
         new TechnicalTestResult(0, '')
       );
 
@@ -40,7 +40,7 @@ export class TechnicalTestService {
         TechnicalTestType.DataBaseTest,
         "Company B",
         "123456789",
-        TestStatus.Created,
+        TestStatus.Finished,
         new TechnicalTestResult(0, '')
       );
 
@@ -54,7 +54,7 @@ export class TechnicalTestService {
         TechnicalTestType.FrontMovileTest,
         "Company B",
         "1018511141",
-        TestStatus.Created,
+        TestStatus.Finished,
         new TechnicalTestResult(0, '')
       );
 
@@ -97,6 +97,26 @@ export class TechnicalTestService {
 
   getTechnicalTestWithResultsByTechnicalUserId(technicalUserId: string): any[] {
     return this.technicalTestWithResults.filter(technicalTest => technicalTest.technicalResource === technicalUserId);
+  }
+
+  getLatestTechnicalTestsCreatedByEmployeeId(employeeId: string): any[] {
+    const technicalTests = this.technicalTests.filter(technicalTest => technicalTest.employeeId === employeeId);
+    return technicalTests.slice(-3);
+  }
+  
+  getLatestTechnicalTestsByTechnicalUserId(technicalUserId: string): any[] {
+    const technicalTests = this.technicalTests.filter(technicalTest => technicalTest.technicalResource === technicalUserId);
+    return technicalTests.slice(-3);
+  }
+  
+  getLatestTechnicalTestsWithResultsByEmployeeUserId(employeeUserId: string): any[] {
+    const technicalTests = this.technicalTestWithResults.filter(technicalTest => technicalTest.employeeId === employeeUserId);
+    return technicalTests.slice(-3);
+  }
+  
+  getLatestTechnicalTestsWithResultsByTechnicalUserId(technicalUserId: string): any[] {
+    const technicalTests = this.technicalTestWithResults.filter(technicalTest => technicalTest.technicalResource === technicalUserId);
+    return technicalTests.slice(-3);
   }
 
 

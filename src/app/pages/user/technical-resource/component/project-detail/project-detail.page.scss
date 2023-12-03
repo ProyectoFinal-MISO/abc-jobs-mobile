@@ -1,0 +1,77 @@
+.custom-card{
+    background-color: #e2e2e2;
+    height: 200px;
+}
+
+.custom-list {
+    --ion-background-color: transparent;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    border: 3px dotted #283138;
+}
+
+.custom-list ion-item {
+    --ion-background-color: #2c3144; 
+}
+
+.item-detail{
+    --ion-background-color: transparent
+}
+
+ion-toolbar {
+    --background: #2c3144; 
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+  
+.divider {
+    flex-grow: 1;
+    height: 5px;
+    background-color: #000;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.custom-card-data{
+    background-color: #283138;
+}
+
+.custom-detail{
+    margin-left: 20px;
+    font-family: 'Jura', sans-serif;
+}
+
+.active-card {
+    border: 3px solid rgb(147, 217, 147); 
+}
+  
+.finished-card {
+    border: 3px solid rgb(255, 103, 103);
+}
+
+.color-1 {
+    background-color: #7a1d63;
+  }
+  
+  .color-2 {
+    background-color: rgb(51, 119, 92);
+  }
+  
+  .color-3 {
+    background-color: #106183;
+  }
+  
+  .color-4 {
+    background-color: #9f4f1a;
+  }
+  
+  .color-5 {
+    background-color: #7d7d15;
+  }
