@@ -183,18 +183,21 @@ export class ProjectService {
 
   getProjectsForTechnicalUser(technicalUserId: string): Project[] {
     const projectsForTechnicalUser: Project[] = [];
-
+  
     this.companies.forEach(company => {
       company.projects.forEach(project => {
         project.teams.forEach(team => {
-          if (team.technicalResourcesAssociated.some(resource => resource.identification === technicalUserId)) {
-            const projectCopy = { ...project, teams: [team] };
+          if ( team.technicalResourcesAssociated.some(resource => resource.identification === technicalUserId)) {
+            const filteredTechnicalResources = team.technicalResourcesAssociated.filter(
+              resource => resource.identification !== technicalUserId
+            );
+            const projectCopy = { ...project, teams: [{ ...team, technicalResourcesAssociated: filteredTechnicalResources }] };
             projectsForTechnicalUser.push(projectCopy);
           }
         });
       });
     });
-
+  
     return projectsForTechnicalUser;
   }
 
