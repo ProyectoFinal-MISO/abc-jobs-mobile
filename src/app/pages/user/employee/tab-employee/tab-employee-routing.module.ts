@@ -28,6 +28,10 @@ const routes: Routes = [
       {
         path: 'technical-results',
         loadChildren: () => import('../technical-results/technical-results.module').then( m => m.TechnicalResultsPageModule)
+      },
+      {
+        path: 'associate-user-project',
+        loadChildren: () => import('../associate-user-project/associate-user-project.module').then( m => m.AssociateUserProjectPageModule)
       }
     ]
   }

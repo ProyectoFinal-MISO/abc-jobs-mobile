@@ -1,13 +1,152 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home-technical-resource</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home-technical-resource</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="homeForm">
+    <div class="interview-info-container">
+      <div class="section-title">
+        <ion-label color="light">Next Interviews</ion-label>
+      </div>
+      <div class="divider"></div>
+
+      <div class="academic-info-container">
+        <ion-list class="custom-list">
+          <ion-card *ngFor="let interview of lastInterviews" [ngClass]="{'active-card': interview.status === 'Created', 'finished-card': interview.status === 'Finished', 'expired-card': interview.status === 'Expired', 'qualified-card': interview.status === 'Qualified'}" class="custom-card-data">
+            <ion-label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-text color="light" class="title-text">{{ interview.title }} , {{ interview.companyName}}</ion-text>
+                  </ion-col>
+                </ion-row>
+                <ion-row align-items-center>
+                  <ion-col size="6">
+                    <ion-text color="success">{{ interview.startDay}}</ion-text>
+                  </ion-col>
+                  <ion-col size="6" class="ion-text-end">
+                    <ion-text color="danger">{{ interview.endDay}}</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-label>
+          </ion-card>
+        </ion-list>
+      </div>
+    </div>
+
+    <div class="interview-info-container">
+      <div class="section-title">
+        <ion-label color="light">Last Interviews Results</ion-label>
+      </div>
+      <div class="divider"></div>
+
+      <div class="academic-info-container">
+        <ion-list class="custom-list">
+          <ion-card *ngFor="let interview of lastInterviewsWithResults" [ngClass]="{'active-card': interview.status === 'Created', 'finished-card': interview.status === 'Finished', 'expired-card': interview.status === 'Expired', 'qualified-card': interview.status === 'Qualified'}" class="custom-card-data">
+            <ion-label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-text color="light" class="title-text">{{ interview.title }} , {{ interview.companyName}}</ion-text>
+                  </ion-col>
+                </ion-row>
+                <ion-row align-items-center>
+                  <ion-col size="6">
+                    <ion-text color="success">{{ interview.startDay}}</ion-text>
+                  </ion-col>
+                  <ion-col size="6" class="ion-text-end">
+                    <ion-text color="danger">{{ interview.endDay}}</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-label>
+          </ion-card>
+        </ion-list>
+  
+      </div>
+    </div>
+
+    <div class="interview-info-container">
+      <div class="section-title">
+        <ion-label color="light">Last Technical Test Results</ion-label>
+      </div>
+      <div class="divider"></div>
+
+      <div class="academic-info-container">
+        <ion-list class="custom-list">
+          <ion-card *ngFor="let techTest of lastTechnicalResults" [ngClass]="{'active-card': techTest.status === 'Created', 'finished-card': techTest.status === 'Finished', 'expired-card': techTest.status === 'Expired', 'qualified-card': techTest.status === 'Qualified'}" class="custom-card-data">
+            <ion-label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-text color="light" class="title-text">{{ techTest.testType }} , {{ techTest.companyName}}</ion-text>
+                  </ion-col>
+                </ion-row>
+                <ion-row align-items-center>
+                  <ion-col size="6">
+                    <ion-text color="rgb(0, 116, 129)">{{ techTest.status}}</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-label>
+          </ion-card>
+        </ion-list>
+  
+      </div>
+    </div>
+
+    <div class="interview-info-container">
+      <div class="section-title">
+        <ion-label color="light">Last Performance Results</ion-label>
+      </div>
+      <div class="divider"></div>
+
+      <div class="academic-info-container">
+        <ion-list class="custom-list">
+          <ion-card *ngFor="let performanceResult of lastPerformanceResults" [ngClass]="{'active-card': performanceResult.status === 'Created', 'finished-card': performanceResult.status === 'Finished', 'expired-card': performanceResult.status === 'Expired', 'qualified-card': performanceResult.status === 'Qualified'}" class="custom-card-data">
+            <ion-label>
+              <ion-grid>
+                <ion-row align-items-center>
+                  <ion-col size="8">
+                    <ion-text color="light">{{ performanceResult.companyName }}</ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="ion-text-end">
+                    <ion-icon *ngFor="let star of getStars(performanceResult.score)" name="star" color="warning"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-label>
+          </ion-card>
+        </ion-list>
+      </div>
+    </div>
+
+    <div class="interview-info-container">
+      <div class="section-title">
+        <ion-label color="light">My Recent Teams</ion-label>
+      </div>
+      <div class="divider"></div>
+
+      <div class="academic-info-container">
+        <ion-list class="custom-list">
+          <ion-row *ngFor="let projectChunk of chunkArray(lastTeamsAssociated, 2)">
+            <ng-container *ngFor="let project of projectChunk">
+              <ion-col size="6">
+                <ion-card class="custom-card-data" [ngClass]="{'active-card-project': project.status === 'Active', 'finished-card-project': project.status === 'Finished'}">
+                  <ion-card-header>
+                    <ion-card-title class="card-title">
+                      <ion-icon name="briefcase" color="light" class="briefcase-icon"></ion-icon>
+                      <ion-text color="light">{{ project.projectName }}</ion-text>
+                    </ion-card-title>
+                    <ion-card-subtitle class="card-subtitle">
+                      <ion-text color="light">Team: {{ project.teams[0]?.teamName }}</ion-text>
+                    </ion-card-subtitle>
+                  </ion-card-header>
+                </ion-card>
+              </ion-col>
+            </ng-container>
+          </ion-row>
+        </ion-list>
+      </div>
+    </div>
+
+  </form>
 </ion-content>

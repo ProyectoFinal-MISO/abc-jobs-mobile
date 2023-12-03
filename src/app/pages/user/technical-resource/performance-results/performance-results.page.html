@@ -10,7 +10,7 @@
     <div class="academic-info-container">
 
     <ion-list class="custom-list">
-      <ion-card *ngFor="let performanceResult of performanceResultsList" class="custom-card-data" (click)="openPerformanceModal(performanceResult)">
+      <ion-card *ngFor="let performanceResult of performanceResultsList" [ngClass]="{'active-card': performanceResult.status === 'Created', 'finished-card': performanceResult.status === 'Finished', 'expired-card': performanceResult.status === 'Expired', 'qualified-card': performanceResult.status === 'Qualified'}" class="custom-card-data" (click)="openPerformanceModal(performanceResult)">
         <ion-label>
           <ion-grid>
             <ion-row align-items-center>

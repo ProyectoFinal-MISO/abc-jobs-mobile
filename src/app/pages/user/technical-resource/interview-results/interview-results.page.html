@@ -10,7 +10,7 @@
     <div class="academic-info-container">
 
       <ion-list class="custom-list">
-        <ion-card *ngFor="let interview of interviewWithResultsList" class="custom-card-data" (click)="openDetailInterviewResultModal(interview)">
+        <ion-card *ngFor="let interview of interviewWithResultsList" [ngClass]="{'active-card': interview.status === 'Created', 'finished-card': interview.status === 'Finished', 'expired-card': interview.status === 'Expired', 'qualified-card': interview.status === 'Qualified'}" class="custom-card-data" (click)="openDetailInterviewResultModal(interview)">
           <ion-label>
             <ion-grid>
               <ion-row>

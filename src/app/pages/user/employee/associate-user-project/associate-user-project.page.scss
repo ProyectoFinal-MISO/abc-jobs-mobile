@@ -1,0 +1,66 @@
+.logo-container {
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+}
+
+.user-type-label {
+    font-family: 'Jura', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.associate-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.rounded-select-input{
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    font-family: 'Jura', sans-serif;;
+}
+  
+.divider {
+    flex-grow: 1;
+    height: 5px;
+    background-color: #000;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.button-container ion-button {
+    margin-top: 10px;
+    min-height: 50px;
+    min-width: 200px;
+}
+
+.associate-user-project-container{
+    max-height: 350px;
+    margin-top: 40px;
+    border: 5px dotted #42744e;
+    background-color: rgb(52, 54, 59);
+}
+
+.briefcase-icon {
+    font-size: 10rem; 
+    display: block;
+    margin: 0 auto;
+    color: black; 
+    margin-top: 40px;
+  }

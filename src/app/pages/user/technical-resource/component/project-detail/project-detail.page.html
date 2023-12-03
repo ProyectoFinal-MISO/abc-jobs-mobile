@@ -1,0 +1,266 @@
+<ion-content>
+  <form [formGroup]="projectDetailForm">
+    <ion-card class="custom-card" [ngClass]="{'active-card': project.status === 'Active', 'finished-card': project.status === 'Finished'}">
+      <ion-toolbar>
+        <ion-title color="light"> Project Detail </ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="dismissModal()">
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-card-content>
+        <ion-item class="item-detail">
+          <ion-text color="dark" class="custom-detail">Status: {{ project.status }}</ion-text>
+        </ion-item>
+        <ion-item class="item-detail">
+          <ion-text color="dark" class="custom-detail">Description: {{ project.description }}</ion-text>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  
+    <div class="programming-languages-info-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <div class="section-title">
+              <ion-label color="light">Technical Skills</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="divider"></div>
+
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let programminglanguage of programminglanguageList" class="custom-card-data">
+          <ion-label>
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col size="8">
+                  <ion-text color="light">{{ programminglanguage.name }}</ion-text>
+                </ion-col>
+                <ion-col size="4" class="ion-text-end">
+                  <ion-icon *ngFor="let star of getStars(programminglanguage.score)" name="star" color="warning"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-card>
+      </ion-list>
+
+    </div>
+
+    <div class="personal-skills-info-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <div class="section-title">
+              <ion-label color="light">Personal Skills</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="divider"></div>
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let skill of personalSkillList" class="custom-card-data">
+          <ion-label>
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col size="8">
+                  <ion-text color="light">{{ skill.name }}</ion-text>
+                </ion-col>
+                <ion-col size="4" class="ion-text-end">
+                  <ion-icon *ngFor="let star of getStars(skill.score)" name="star" color="warning"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-card>
+      </ion-list>
+    </div>
+
+    <div class="participants-info-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <div class="section-title">
+              <ion-label color="light">Participants</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="divider"></div>
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let participant of participantsList; let i = index" [ngClass]="getColorClass(i)" class="custom-card-data-participant">
+          <ion-label>
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col size="8">
+                  <ion-text color="light">{{ participant.name }} {{ participant.lastName }}</ion-text>
+                </ion-col>
+                <ion-col size="4" class="ion-text-end">
+                  <ion-text color="light">{{ participant.companyName }}</ion-text>
+                </ion-col>
+              </ion-row>
+              <ion-row align-items-center>
+                <ion-text color="light">{{ participant.role }}</ion-text>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+          <div class="programming-languages-info-container">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="8">
+                  <div class="section-title">
+                    <ion-label color="light">Technical Skills</ion-label>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <div class="divider"></div>
+            <ion-list class="custom-list">
+              <ion-card *ngFor="let programminglanguage of participant.technicalSkills" class="custom-card-data">
+                <ion-label>
+                  <ion-grid>
+                    <ion-row align-items-center>
+                      <ion-col size="8">
+                        <ion-text color="light">{{ programminglanguage.name }}</ion-text>
+                      </ion-col>
+                      <ion-col size="4" class="ion-text-end">
+                        <ion-icon *ngFor="let star of getStars(programminglanguage.score)" name="star" color="warning"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-card>
+            </ion-list>
+
+          </div>
+
+          <div class="personal-skills-info-container">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="8">
+                  <div class="section-title">
+                    <ion-label color="light">Personal Skills</ion-label>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <div class="divider"></div>
+            <ion-list class="custom-list">
+              <ion-card *ngFor="let skill of participant.personalSkills" class="custom-card-data">
+                <ion-label>
+                  <ion-grid>
+                    <ion-row align-items-center>
+                      <ion-col size="8">
+                        <ion-text color="light">{{ skill.name }}</ion-text>
+                      </ion-col>
+                      <ion-col size="4" class="ion-text-end">
+                        <ion-icon *ngFor="let star of getStars(skill.score)" name="star" color="warning"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-card>
+            </ion-list>
+          </div>
+        </ion-card>
+      </ion-list>
+    </div>
+
+    <div class="technical-resource-info-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <div class="section-title">
+              <ion-label color="light">Associated Technical Resources</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="divider"></div>
+      <ion-list class="custom-list">
+        <ion-card *ngFor="let tech of techResourceList; let i = index" [ngClass]="getColorClass(i)" class="custom-card-data-participant">
+          <ion-label>
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col size="8">
+                  <ion-text color="light">{{ tech.name }} {{ tech.lastName }}</ion-text>
+                </ion-col>
+                <ion-col size="4" class="ion-text-end">
+                  <ion-text color="light"> Contrated</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+          <div class="programming-languages-info-container">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="8">
+                  <div class="section-title">
+                    <ion-label color="light">Technical Skills</ion-label>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <div class="divider"></div>
+            <ion-list class="custom-list">
+              <ion-card *ngFor="let programminglanguage of tech.programmingLanguages" class="custom-card-data">
+                <ion-label>
+                  <ion-grid>
+                    <ion-row align-items-center>
+                      <ion-col size="8">
+                        <ion-text color="light">{{ programminglanguage.name }}</ion-text>
+                      </ion-col>
+                      <ion-col size="4" class="ion-text-end">
+                        <ion-icon *ngFor="let star of getStars(programminglanguage.score)" name="star" color="warning"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-card>
+            </ion-list>
+
+          </div>
+
+          <div class="personal-skills-info-container">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="8">
+                  <div class="section-title">
+                    <ion-label color="light">Personal Skills</ion-label>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <div class="divider"></div>
+            <ion-list class="custom-list">
+              <ion-card *ngFor="let skill of tech.personalSkills" class="custom-card-data">
+                <ion-label>
+                  <ion-grid>
+                    <ion-row align-items-center>
+                      <ion-col size="8">
+                        <ion-text color="light">{{ skill.name }}</ion-text>
+                      </ion-col>
+                      <ion-col size="4" class="ion-text-end">
+                        <ion-icon *ngFor="let star of getStars(skill.score)" name="star" color="warning"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-card>
+            </ion-list>
+          </div>
+        </ion-card>
+      </ion-list>
+    </div>
+
+  </form>
+</ion-content>
+
+
+
+
+
+

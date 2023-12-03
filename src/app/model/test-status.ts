@@ -1,4 +1,6 @@
 export enum TestStatus{
-    Created = 'CREATED',
-    Qualified = 'QUALIFIED'
+    Created = 'Created',
+    Finished = 'Finished',
+    Qualified = 'Qualified',
+    Expired = 'Expired'
 }  

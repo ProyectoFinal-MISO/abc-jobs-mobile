@@ -36,7 +36,6 @@ export class InterviewResultsPage implements OnInit {
     const user = this.technicalService.getUserSession();
     if(user){
       this.interviewWithResultsList = this.interviewService.getInterviewsWithResultsByTechnicalUserId(user.identification);
-      console.log("INTERVIEW LIST: ",this.interviewWithResultsList)
     }
   }
 

@@ -22,4 +22,14 @@ ion-header {
       align-items: center;
     }
 }
-  
+
+.avatar-container {
+    display: flex;
+    align-items: center;
+    margin-left: 80px; 
+    margin-right: 80px;
+  }
+
+  .app-logo {
+    max-width: 150px;
+}

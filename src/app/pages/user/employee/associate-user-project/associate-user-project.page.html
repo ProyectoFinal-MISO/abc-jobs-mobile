@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <form [formGroup]="associateUserProjectForm" (ngSubmit)="onSubmit()">
+    <div class="logo-container">
+      <div class="associate-container">
+        <ion-label class="user-type-label" color="light">Associate User To Project</ion-label>
+      </div>
+    </div>
+
+    <ion-icon name="briefcase" class="briefcase-icon"></ion-icon>
+    
+    <div class="associate-user-project-container">
+
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">Company</ion-label>
+        <ion-select formControlName="company" (ionChange)="optionsCompany($event)" interface="popover" placeholder="Select Company">
+          <ion-select-option *ngFor="let company of companies" [value]="company">
+            {{ company.companyName }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">Project</ion-label>
+        <ion-select formControlName="project" (ionChange)="optionsProject($event)" interface="popover" placeholder="Select Project">
+          <ion-select-option *ngFor="let project of selectedCompany.projects" [value]="project">
+            {{ project.projectName }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">Team</ion-label>
+        <ion-select formControlName="team" (ionChange)="optionsTeam($event)" interface="popover" placeholder="Select Team">
+          <ion-select-option *ngFor="let team of selectedProject.teams" [value]="team">
+            {{ team.teamName }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="rounded-select-input">
+        <ion-label position="stacked">Available Users</ion-label>
+        <ion-select formControlName="technicalUser" (ionChange)="optionsTechnicalUser($event)" interface="popover">
+          <ion-select-option *ngFor="let technicalUser of availableTechnicalUsers" [value]="technicalUser.value">
+            {{ technicalUser.key }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    
+    <div class="button-container">
+      <ion-button color="light" shape="round" type="submit"> Associate </ion-button>
+    </div>
+    <div *ngIf="formSubmitted && !associateUserProjectForm.valid" class="error-message"></div>
+  </form>
+
+</ion-content>
+

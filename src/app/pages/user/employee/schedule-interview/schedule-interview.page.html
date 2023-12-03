@@ -13,7 +13,7 @@
     <div class="academic-info-container">
 
       <ion-list class="custom-list">
-        <ion-card *ngFor="let interview of interviewList" class="custom-card-data">
+        <ion-card *ngFor="let interview of interviewList" [ngClass]="{'active-card': interview.status === 'Created', 'finished-card': interview.status === 'Finished', 'expired-card': interview.status === 'Expired', 'qualified-card': interview.status === 'Qualified'}" class="custom-card-data">
           <ion-label>
             <ion-grid>
               <ion-row>

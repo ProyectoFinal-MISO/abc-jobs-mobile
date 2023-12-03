@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TechnicalUserService } from 'src/app/service/user/technical-user.service';
 
 @Component({
   selector: 'app-tab-technical-resource',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabTechnicalResourcePage implements OnInit {
 
-  constructor() { }
+  technicalResource: any;
+
+  constructor(private technicalService: TechnicalUserService) {
+     this.technicalResource = technicalService.getUserSession();
+   }
 
   ngOnInit() {
   }
