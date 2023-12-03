@@ -17,14 +17,14 @@
           <ion-card-subtitle color="danger">{{ techTest.status }}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
+          <ion-row class="custom-detail-container">
+            <ion-text color="white" class="custom-detail">Observations: {{ techTest.testResult.observations }}</ion-text>
+          </ion-row>
           <div class="score-box" [class.success]="getScoreColor(techTest.testResult.score) === 'green'" [class.warning]="getScoreColor(techTest.testResult.score) === 'yellow'" [class.danger]="getScoreColor(techTest.testResult.score) === 'red'">
             <ion-text color="dark" class="score-text">
               {{ (techTest.testResult.score * 10).toFixed(0) }}%
             </ion-text>
           </div>
-          <ion-row class="ion-align-items-center">
-            <ion-text color="white" class="custom-detail">Observations: {{ techTest.testResult.observations }}</ion-text>
-          </ion-row>
         </ion-card-content>
       </ion-card>
 

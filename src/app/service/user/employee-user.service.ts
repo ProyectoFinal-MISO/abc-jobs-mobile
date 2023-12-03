@@ -17,7 +17,7 @@ export class EmployeeUserService {
   private createDefaultUsers(): void {
 
     const defaultEmployeeUser = new Employee(
-      'test@test.com',
+      'employee@test.com',
       'test',
       'Jhon',
       'Doe',

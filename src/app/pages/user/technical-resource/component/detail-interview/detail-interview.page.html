@@ -17,12 +17,14 @@
           <ion-card-subtitle>{{ interview.status}}</ion-card-subtitle>
         </ion-card-header>
         <ion-label>
-          <ion-text color="dark" class="custom-detail">Observations: {{ interview.description }}</ion-text>
-          <ion-row class="ion-align-items-center">
-            <ion-text color="white" class="custom-detail">Place: {{ interview.place }}</ion-text>
+          <ion-row class="custom-detail-container">
+            <ion-text color="dark" class="custom-detail">Observations: {{ interview.description }}</ion-text>
           </ion-row>
-          <ion-row class="ion-align-items-center">
-            <ion-text color="white" class="custom-detail">Link: {{ interview.link }}</ion-text>
+          <ion-row class="custom-detail-container">
+            <ion-text color="dark" class="custom-detail">Place: {{ interview.place }}</ion-text>
+          </ion-row>
+          <ion-row class="custom-detail-container">
+            <ion-text color="dark" class="custom-detail">Link: {{ interview.link }}</ion-text>
           </ion-row>
           <ion-row class="ion-align-items-center">
             <ion-col size="6" class="ion-text-start">
@@ -33,7 +35,7 @@
             </ion-col>
           </ion-row>
         </ion-label>
-        <ion-button class="end-button" *ngIf="interview.status === 'Created'" (click)="endInterview()">
+        <ion-button class="end-button" color="light" *ngIf="interview.status === 'Created'" (click)="endInterview()">
           <ion-icon name="call" slot="start"></ion-icon>
           End Interview
         </ion-button>

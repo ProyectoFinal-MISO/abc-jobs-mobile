@@ -13,7 +13,7 @@
           <ion-card-title color="light" class="title-text smaller-text">
             {{ techTest.testType }}, {{ techTest.companyName }}
           </ion-card-title>
-          <ion-card-subtitle color="danger" class="title-text smaller-text">
+          <ion-card-subtitle color="success" class="title-text smaller-text">
             {{ techTest.status }}
           </ion-card-subtitle>
           <div class="score-box" [class.success]="getScoreColor(techTest.testResult.score) === 'green'" [class.warning]="getScoreColor(techTest.testResult.score) === 'yellow'" [class.danger]="getScoreColor(techTest.testResult.score) === 'red'">

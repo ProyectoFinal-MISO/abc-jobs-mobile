@@ -43,11 +43,11 @@ export class TechnicalUserService {
     const professionalDataList: Array<ProfessionalData> = [professionalData1, professionalData2];
 
     const defaultTechnicalUser = new TechnicalUser(
-      'test@test.com',
+      'technicalresource@test.com',
       'test@test.com',
       'test',
-      'Jhon',
-      'Doe',
+      'Andres Martin',
+      'Cantor Urrego',
       UserType.TechnicalResource,
       'CC',
       '123456789',

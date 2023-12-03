@@ -95,12 +95,12 @@ export class ProjectService {
     const projects: Project[] = [];
 
     for (let i = 1; i <= 3; i++) {
-      const projectName = `Project ${i}`;
+      const projectName = `Project Generated #${i}`;
       const project = new Project(
         projectName,
         this.generateFakeTeams(),
         Status.Active,
-        `Description about the Project ${i}`,
+        `Description about the Project Generated ${i}`,
         this.generateFakeSkills(),
         this.generateFakeLanguages()
       );
@@ -113,7 +113,7 @@ export class ProjectService {
         'Project Finish',
         this.generateFakeTeamsFinished(technicalUser),
         Status.Finished,
-        'Description about the Project',
+        'Description about the Project Finished',
         this.generateFakeSkills(),
         this.generateFakeLanguages()
       );
