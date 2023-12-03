@@ -1,0 +1,80 @@
+.logo-container {
+    text-align: center;
+    margin-top: 30px;
+    position: relative;
+}
+
+.user-type-label {
+    font-family: 'Jura', sans-serif;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.divider {
+    flex-grow: 1;
+    height: 5px;
+    background-color: #000;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px
+}
+
+.performance-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.custom-list {
+    --ion-background-color: transparent;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    border: 3px dotted #283138;
+}
+
+.custom-card-data{
+    background-color: #283138;
+}
+
+.add-button{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.add-button ion-icon {
+    font-size: 30px; 
+}
+
+.active-card {
+    border: 3px solid rgb(255, 220, 47); 
+}
+  
+.finished-card {
+    border: 3px solid rgb(0, 116, 129);
+}
+
+.expired-card {
+    border: 3px solid rgb(255, 103, 103);
+}
+
+.qualified-card {
+    border: 3px solid rgb(50, 213, 58);
+}
+
+.active-card-project {
+    border: 3px solid rgb(147, 217, 147); 
+}
+  
+.finished-card-project {
+    border: 3px solid rgb(255, 103, 103);
+}
+
+.section-title{
+    margin-top: 80px;
+    margin-left: 10px;
+}

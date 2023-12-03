@@ -201,13 +201,13 @@ export class ProjectService {
     return projectsForTechnicalUser;
   }
 
-  getLatestProjectsForTechnicalUser(technicalUserId: string): Project[] {
-    const projectsForTechnicalUser: Project[] = [];
+  getLatestActiveProjectsForTechnicalUser(technicalUserId: string): Project[] {
+    const activeProjectsForTechnicalUser: Project[] = [];
   
     const filteredProjects = this.companies.reduce((acc, company) => {
       company.projects.forEach(project => {
         project.teams.forEach(team => {
-          if (team.technicalResourcesAssociated.some(resource => resource.identification === technicalUserId)) {
+          if (team.technicalResourcesAssociated.some(resource => resource.identification === technicalUserId) && project.status === 'Active') {
             const filteredTechnicalResources = team.technicalResourcesAssociated.filter(
               resource => resource.identification !== technicalUserId
             );
@@ -219,8 +219,8 @@ export class ProjectService {
       return acc;
     }, [] as Project[]);
   
-    const lastTwoProjects = filteredProjects.slice(-2);
-    return lastTwoProjects;
+    const lastTwoActiveProjects = filteredProjects.slice(-2);
+    return lastTwoActiveProjects;
   }
 
   addTechnicalUserToProject(companyName: string, projectName: string, teamName: string, technicalUser: TechnicalUser): { success: boolean, error?: string } {

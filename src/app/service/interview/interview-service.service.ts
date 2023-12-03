@@ -78,6 +78,11 @@ export class InterviewService {
     return interviews.slice(-3);
   }
 
+  getLastInterviewsByTechnicalUserId(technicalUserId: string): any[] {
+    const interviews = this.getInterviewsByTechnicalUserId(technicalUserId);
+    return interviews.slice(-3);
+  }
+
   getLastThreeInterviewsWithResultsByEmployeeUserId(employeeUserId: string): any[] {
     const interviews = this.getInterviewsWithResultsByEmployeeUserId(employeeUserId);
     return interviews.slice(-3);
