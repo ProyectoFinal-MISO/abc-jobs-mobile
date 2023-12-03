@@ -34,10 +34,8 @@ export class ScheduleInterviewPage implements OnInit {
 
   loadInterviewInformation() {
     const user = this.employeeService.getUserSession();
-    console.log("LOAD USER: ",user)
     if(user){
       this.interviewList = this.interviewService.getInterviewsByEmployeeId(user.identification);
-      console.log("INTERVIEW LIST: ",this.interviewList)
     }
   }
 

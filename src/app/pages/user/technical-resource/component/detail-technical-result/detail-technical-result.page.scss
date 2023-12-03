@@ -39,7 +39,7 @@
   }
   
   .score-box.danger {
-    --background-color: rgb(251, 143, 143);
+    --background-color: rgb(245, 53, 53);
   }
   
   .score-text {
@@ -88,3 +88,19 @@
     font-size: 15px;
     margin-left: 15px;
   }
+
+  .active-card {
+    border: 3px solid rgb(255, 220, 47); 
+}
+  
+.finished-card {
+    border: 3px solid rgb(0, 116, 129);
+}
+
+.expired-card {
+    border: 3px solid rgb(255, 103, 103);
+}
+
+.qualified-card {
+    border: 3px solid rgb(50, 213, 58);
+}

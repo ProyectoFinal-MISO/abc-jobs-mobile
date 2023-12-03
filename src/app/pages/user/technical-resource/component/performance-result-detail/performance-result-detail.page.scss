@@ -29,3 +29,19 @@ ion-toolbar {
     margin-right: 15px;
     margin-bottom: 30px;
   }
+
+  .active-card {
+    border: 3px solid rgb(255, 220, 47); 
+}
+  
+.finished-card {
+    border: 3px solid rgb(0, 116, 129);
+}
+
+.expired-card {
+    border: 3px solid rgb(255, 103, 103);
+}
+
+.qualified-card {
+    border: 3px solid rgb(50, 213, 58);
+}

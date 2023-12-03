@@ -26,7 +26,7 @@ export class TechnicalTestService {
         TechnicalTestType.BackTest,
         "Company A",
         "1234567890",
-        TestStatus.Created,
+        TestStatus.Finished,
         new TechnicalTestResult(0, '')
       );
 
@@ -40,7 +40,7 @@ export class TechnicalTestService {
         TechnicalTestType.DataBaseTest,
         "Company B",
         "123456789",
-        TestStatus.Created,
+        TestStatus.Finished,
         new TechnicalTestResult(0, '')
       );
 
@@ -54,7 +54,7 @@ export class TechnicalTestService {
         TechnicalTestType.FrontMovileTest,
         "Company B",
         "1018511141",
-        TestStatus.Created,
+        TestStatus.Finished,
         new TechnicalTestResult(0, '')
       );
 

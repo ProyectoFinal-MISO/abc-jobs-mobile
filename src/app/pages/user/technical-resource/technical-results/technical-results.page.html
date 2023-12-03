@@ -9,7 +9,7 @@
 
     <div class="academic-info-container">
       <ion-list class="custom-list">
-        <ion-card *ngFor="let techTest of technicalTestWithResultsList" class="custom-card-data" (click)="openDetailTechTestResultModal(techTest)">
+        <ion-card *ngFor="let techTest of technicalTestWithResultsList" [ngClass]="{'active-card': techTest.status === 'Created', 'finished-card': techTest.status === 'Finished', 'expired-card': techTest.status === 'Expired', 'qualified-card': techTest.status === 'Qualified'}" class="custom-card-data" (click)="openDetailTechTestResultModal(techTest)">
           <ion-card-title color="light" class="title-text smaller-text">
             {{ techTest.testType }}, {{ techTest.companyName }}
           </ion-card-title>

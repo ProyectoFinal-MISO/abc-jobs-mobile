@@ -11,7 +11,7 @@
         </ion-buttons>
       </ion-toolbar>
   
-      <ion-card class="custom-card-data">
+      <ion-card class="custom-card-data" [ngClass]="{'active-card': techTest.status === 'Created', 'finished-card': techTest.status === 'Finished', 'expired-card': techTest.status === 'Expired', 'qualified-card': techTest.status === 'Qualified'}">
         <ion-card-header>
           <ion-card-title>{{ techTest.testType }}, {{ techTest.companyName }}</ion-card-title>
           <ion-card-subtitle color="danger">{{ techTest.status }}</ion-card-subtitle>

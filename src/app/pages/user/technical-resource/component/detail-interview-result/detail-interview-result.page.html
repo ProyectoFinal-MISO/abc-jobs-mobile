@@ -11,7 +11,7 @@
         </ion-buttons>
       </ion-toolbar>
   
-      <ion-card class="custom-card-data">
+      <ion-card class="custom-card-data" [ngClass]="{'active-card': interviewResult.status === 'Created', 'finished-card': interviewResult.status === 'Finished', 'expired-card': interviewResult.status === 'Expired', 'qualified-card': interviewResult.status === 'Qualified'}">
         <ion-card-header>
           <ion-card-title>{{ interviewResult.title }}, {{ interviewResult.companyName }}</ion-card-title>
           <ion-card-subtitle color="danger">{{ interviewResult.status }}</ion-card-subtitle>

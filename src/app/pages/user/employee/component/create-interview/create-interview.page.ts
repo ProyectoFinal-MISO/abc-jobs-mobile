@@ -21,6 +21,7 @@ export class CreateInterviewPage implements OnInit {
   selectedGuest: string;
   startDate: string = new Date().toISOString();
   endDate: string = new Date().toISOString();
+  currentDate: string;
   static nextId = 6;
 
   companies = [
@@ -47,6 +48,7 @@ export class CreateInterviewPage implements OnInit {
       this.selectedPlace = '',
       this.selectedGuest = '',
       this.guests = this.technicalService.generateGuestsList();
+      this.currentDate = new Date().toISOString();
       this.createInterviewEmployeeForm = this.formBuilder.group({
         title: ['', [Validators.required]],
         company: ['', [Validators.required]],

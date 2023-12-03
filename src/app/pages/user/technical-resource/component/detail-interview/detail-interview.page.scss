@@ -2,6 +2,10 @@ ion-toolbar {
     --background: #2e3238;
   }
 
+  .custom-card {
+    background-color: transparent;
+  }
+
   .custom-card-data {
     background-color: #2e3238;
   }
@@ -40,3 +44,32 @@ ion-toolbar {
     font-size: 15px;
     margin-left: 15px;
   }
+
+  .active-card {
+    border: 3px solid rgb(255, 220, 47); 
+}
+  
+.finished-card {
+    border: 3px solid rgb(0, 116, 129);
+}
+
+.expired-card {
+    border: 3px solid rgb(255, 103, 103);
+}
+
+.qualified-card {
+    border: 3px solid rgb(50, 213, 58);
+}
+
+.end-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --color: #003366; 
+  color: #ffffff;
+  margin: 0 auto; 
+}
+
+.end-button ion-icon {
+  margin-right: 8px;
+}
