@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-project-detail',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectDetailPage implements OnInit {
 
-  constructor() { }
+  projectDetailForm: FormGroup;
+  personalSkillList: Array<any> = []; 
+  programminglanguageList: Array<any> = [];
+  participantsList: Array<any> = [];
+  project: any;
+  colorClasses: string[] = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5'];
+
+  constructor(private navParams: NavParams,
+    private modalController: ModalController,
+    private formBuilder: FormBuilder) { 
+      this.project = this.navParams.get('project');
+      this.personalSkillList = this.project.personalSkills;
+      this.programminglanguageList = this.project.technicalSkills;
+      this.participantsList = this.project.teams[0].participants;
+      this.projectDetailForm = this.formBuilder.group({});
+    }
 
   ngOnInit() {
+  }
+
+  dismissModal() {
+    this.modalController.dismiss();
+  }
+
+  getStars(score: number): number[] {
+    return Array.from({ length: score }, (_, index) => index + 1);
+  }
+
+  getColorClass(index: number): string {
+    const colorIndex = index % this.colorClasses.length;
+    return this.colorClasses[colorIndex];
   }
 
 }

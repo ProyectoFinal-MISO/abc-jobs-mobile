@@ -156,6 +156,7 @@ export class ProjectService {
         this.getRandomName(),
         this.getRandomLastName(),
         this.getRandomRole(),
+        'Fantasy Company Anexo',
         this.generateFakeSkills(),
         this.generateFakeLanguages()
       );
