@@ -201,6 +201,28 @@ export class ProjectService {
     return projectsForTechnicalUser;
   }
 
+  getLatestProjectsForTechnicalUser(technicalUserId: string): Project[] {
+    const projectsForTechnicalUser: Project[] = [];
+  
+    const filteredProjects = this.companies.reduce((acc, company) => {
+      company.projects.forEach(project => {
+        project.teams.forEach(team => {
+          if (team.technicalResourcesAssociated.some(resource => resource.identification === technicalUserId)) {
+            const filteredTechnicalResources = team.technicalResourcesAssociated.filter(
+              resource => resource.identification !== technicalUserId
+            );
+            const projectCopy = { ...project, teams: [{ ...team, technicalResourcesAssociated: filteredTechnicalResources }] };
+            acc.push(projectCopy);
+          }
+        });
+      });
+      return acc;
+    }, [] as Project[]);
+  
+    const lastTwoProjects = filteredProjects.slice(-2);
+    return lastTwoProjects;
+  }
+
   addTechnicalUserToProject(companyName: string, projectName: string, teamName: string, technicalUser: TechnicalUser): { success: boolean, error?: string } {
     const company = this.companies.filter(c => c.companyName === companyName)[0];  
 

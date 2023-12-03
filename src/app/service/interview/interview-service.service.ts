@@ -68,4 +68,24 @@ export class InterviewService {
     return this.entrevistasConResultados.filter(entrevista => entrevista.guest === technicalUserId);
   }
 
+  getLastThreeInterviewsByEmployeeId(employeeId: string): any[] {
+    const interviews = this.getInterviewsByEmployeeId(employeeId);
+    return interviews.slice(-3);
+  }
+
+  getLastThreeFinishedInterviewsByEmployeeId(employeeId: string): any[] {
+    const interviews = this.getInterviewsByEmployeeIdForTest(employeeId);
+    return interviews.slice(-3);
+  }
+
+  getLastThreeInterviewsWithResultsByEmployeeUserId(employeeUserId: string): any[] {
+    const interviews = this.getInterviewsWithResultsByEmployeeUserId(employeeUserId);
+    return interviews.slice(-3);
+  }
+
+  getLastThreeInterviewsWithResultsByTechnicalUserId(technicalUserId: string): any[] {
+    const interviews = this.getInterviewsWithResultsByTechnicalUserId(technicalUserId);
+    return interviews.slice(-3);
+  }
+
 }
