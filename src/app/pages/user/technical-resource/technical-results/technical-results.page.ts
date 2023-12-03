@@ -44,7 +44,7 @@ export class TechnicalResultsPage implements OnInit {
     const modal = await this.modalController.create({
       component: DetailTechnicalResultPage,  
       componentProps: {
-        interviewResult: techTest,
+        techTest: techTest,
       },
     });
 

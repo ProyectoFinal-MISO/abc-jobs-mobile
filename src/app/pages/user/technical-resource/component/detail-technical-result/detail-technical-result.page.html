@@ -1,13 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>detail-technical-result</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <form [formGroup]="TechnicalTestResultDetailForm">
+    <ion-card class="custom-card">
+      
+      <ion-toolbar>
+        <ion-title color="light"> Technical Test Result Detail </ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="dismissModal()">
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+  
+      <ion-card class="custom-card-data">
+        <ion-card-header>
+          <ion-card-title>{{ techTest.testType }}, {{ techTest.companyName }}</ion-card-title>
+          <ion-card-subtitle color="danger">{{ techTest.status }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="score-box" [class.success]="getScoreColor(techTest.testResult.score) === 'green'" [class.warning]="getScoreColor(techTest.testResult.score) === 'yellow'" [class.danger]="getScoreColor(techTest.testResult.score) === 'red'">
+            <ion-text color="dark" class="score-text">
+              {{ (techTest.testResult.score * 10).toFixed(0) }}%
+            </ion-text>
+          </div>
+          <ion-row class="ion-align-items-center">
+            <ion-text color="white" class="custom-detail">Observations: {{ techTest.testResult.observations }}</ion-text>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detail-technical-result</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    </ion-card>
+  
+  </form>
 </ion-content>
+
+
+
+
