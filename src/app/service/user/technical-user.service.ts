@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AcademicData } from 'src/app/model/user/technical/academic-data';
-import { AdditionalData } from 'src/app/model/user/technical/additional-data';
 import { Language } from 'src/app/model/user/technical/language';
 import { PersonalSkill } from 'src/app/model/user/technical/personal-skill';
 import { ProfessionalData } from 'src/app/model/user/technical/professional-data';
@@ -22,20 +21,20 @@ export class TechnicalUserService {
 
   private createDefaultUsers(): void {
 
-    const personalSkill1 = new PersonalSkill('Skill1', '3');
-    const personalSkill2 = new PersonalSkill('Skill2', '5');
+    const personalSkill1 = new PersonalSkill('Team Work', '3');
+    const personalSkill2 = new PersonalSkill('Communication', '5');
 
-    const language1 = new Language('Language1', '5');
-    const language2 = new Language('Language2', '4');
+    const language1 = new Language('English', '5');
+    const language2 = new Language('French', '4');
 
-    const programmingLanguage1 = new ProgrammingLanguageData('Language1', '5');
-    const programmingLanguage2 = new ProgrammingLanguageData('Language2', '4');
+    const programmingLanguage1 = new ProgrammingLanguageData('JAVA', '5');
+    const programmingLanguage2 = new ProgrammingLanguageData('TypeScript', '4');
 
-    const academicData1 = new AcademicData('School1', 'Title1', 'High School', '01/01/2020', '01/01/2024');
-    const academicData2 = new AcademicData('School2', 'Title2', 'University', '01/01/2018', '01/01/2024');
+    const academicData1 = new AcademicData('Canapro', 'Bachiller', 'General Baccalaureate', '01/01/2003', '01/01/2015');
+    const academicData2 = new AcademicData('Universidad de los Andes', 'Master in Software Engineer', 'Master', '01/01/2022', '01/01/2024');
 
-    const professionalData1 = new ProfessionalData('JobTitle1', 'Company1', 'Details1', '01/01/2020', '01/01/2025');
-    const professionalData2 = new ProfessionalData('JobTitle2', 'Company2', 'Details2', '01/01/2015', '01/01/2025');
+    const professionalData1 = new ProfessionalData('Standard Software Engineer', 'PayU', 'Details to Test', '01/01/2019', '01/01/2021');
+    const professionalData2 = new ProfessionalData('Senior Software Engineer', 'PayU', 'Details to test', '01/01/2022', '02/12/2023');
 
     const personalSkillList: Array<PersonalSkill> = [personalSkill1, personalSkill2];
     const languageList: Array<Language> = [language1, language2];
@@ -185,6 +184,11 @@ export class TechnicalUserService {
     }));
   
     return guestsList;
+  }
+
+  getUserById(identification: string): TechnicalUser | null {
+    const user = this.users.find(u => u.identification === identification);
+    return user ? { ...user } : null;
   }
 
 }

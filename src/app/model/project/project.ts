@@ -7,7 +7,6 @@ import { Team } from "./team";
 export class Project{
 
     constructor(
-        public companyName: string,
         public projectName: string,
         public teams: Team[],
         public status: Status,

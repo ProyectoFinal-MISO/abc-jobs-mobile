@@ -32,8 +32,8 @@ export class CreateInterviewPage implements OnInit {
   ];
 
   places = [
-    {label: 'Virtual', value: 'VIRTUAL'},
-    {label: 'In Person', value: 'IN PERSON'}
+    {label: 'Virtual', value: 'Virtual'},
+    {label: 'In Person', value: 'In Person'}
   ];
 
   guests: { key: string, value: string }[] = [];
