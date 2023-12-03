@@ -1,13 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>my-team</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="myTeamsForm">
+    <div class="logo-container">
+      <div class="performance-container">
+        <ion-label class="user-type-label" color="light"> My Teams</ion-label>
+      </div>
+      <div class="divider"></div>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">my-team</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="academic-info-container">
+      <ion-list class="custom-list">
+        <ion-row *ngFor="let projectChunk of chunkArray(myProjectsList, 2)">
+          <ng-container *ngFor="let project of projectChunk">
+            <ion-col size="6">
+              <ion-card class="custom-card-data" [ngClass]="{'active-card': project.status === 'Active', 'finished-card': project.status === 'Finished'}" (click)="openProjectModal(project)">
+                <ion-card-header>
+                  <ion-card-title class="card-title">
+                    <ion-icon name="briefcase" color="light" class="briefcase-icon"></ion-icon>
+                    <ion-text color="light">{{ project.projectName }}</ion-text>
+                  </ion-card-title>
+                  <ion-card-subtitle class="card-subtitle">
+                    <ion-text color="light">Team: {{ project.teams[0]?.teamName }}</ion-text>
+                  </ion-card-subtitle>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ng-container>
+        </ion-row>
+      </ion-list>
+    </div>
+  </form>
 </ion-content>

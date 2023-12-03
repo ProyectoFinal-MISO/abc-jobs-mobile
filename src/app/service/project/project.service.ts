@@ -7,6 +7,7 @@ import { Team } from 'src/app/model/project/team';
 import { PersonalSkill } from 'src/app/model/user/technical/personal-skill';
 import { ProgrammingLanguageData } from 'src/app/model/user/technical/programming-languages';
 import { TechnicalUser } from 'src/app/model/user/technical/technical';
+import { TechnicalUserService } from '../user/technical-user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ProjectService {
 
   private companies: Company[] = [];
 
-  constructor() {
+  constructor(private technicalResourceService: TechnicalUserService) {
     this.initializeFakeData();
     console.log("COMPANIES:", this.companies)
   }
@@ -106,18 +107,23 @@ export class ProjectService {
       projects.push(project);
     }
 
-    const projectFinish = new Project(
-      'Project Finish',
-      this.generateFakeTeams(),
-      Status.Finished,
-      'Description about the Project',
-      this.generateFakeSkills(),
-      this.generateFakeLanguages()
-    );
-
-    projects.push(projectFinish);
+    const technicalUser = this.technicalResourceService.getUserById("123456789");
+    if(technicalUser){
+      const projectFinish = new Project(
+        'Project Finish',
+        this.generateFakeTeamsFinished(technicalUser),
+        Status.Finished,
+        'Description about the Project',
+        this.generateFakeSkills(),
+        this.generateFakeLanguages()
+      );
+  
+      projects.push(projectFinish);
+    }
     return projects;
   }
+
+
 
   private generateFakeTeams(): Team[] {
     const teams: Team[] = [];
@@ -129,6 +135,16 @@ export class ProjectService {
       teams.push(team);
     }
 
+    return teams;
+  }
+
+  private generateFakeTeamsFinished(technicalResource: TechnicalUser): Team[] {
+    const teams: Team[] = [];
+    const teamName = this.getRandomTeamName();
+    const participants: Participant[] = this.generateFakeParticipants();
+    const team = new Team(teamName, participants, [technicalResource]);
+    teams.push(team);
+    
     return teams;
   }
 
@@ -182,7 +198,6 @@ export class ProjectService {
   }
 
   addTechnicalUserToProject(companyName: string, projectName: string, teamName: string, technicalUser: TechnicalUser): { success: boolean, error?: string } {
-    console.log(this.companies)
     const company = this.companies.filter(c => c.companyName === companyName)[0];  
 
     if (!company) {

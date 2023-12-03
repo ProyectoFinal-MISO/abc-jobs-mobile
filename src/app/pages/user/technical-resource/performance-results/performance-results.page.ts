@@ -34,7 +34,6 @@ export class PerformanceResultsPage implements OnInit {
 
   loadPerformanceResultInformation() {
     const user = this.technicalService.getUserSession();
-    console.log("LOAD USER: ",user)
     if(user){
       this.performanceResultsList = this.performanceService.getPerformanceResultsByTechnicalId(user.identification);
     }
